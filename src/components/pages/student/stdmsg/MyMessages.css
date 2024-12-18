@@ -313,7 +313,7 @@
 }
 .usermailchat {
   height: 40px;
-  width: 84px;
+  width: 40px;
   background-color: black;
   border-radius: 50%;
   text-align: center;
@@ -322,7 +322,7 @@
   align-items: center;
   color: white;
   margin-left: 9px;
-  margin-right: 5px;
+  margin-right: 48px;
 }
 .send-msg-chat {
   max-width: 320px;
@@ -352,8 +352,8 @@
   font-size: 13px;
 }
 .chat-img {
-  height: 46px;
-  width: 90px;
+  height: 45px;
+  width: 45px;
   border-radius: 100%;
 }
 .resev-msg-chat {
@@ -399,4 +399,15 @@
   color: #cb3530 !important;
   font-size: 20px;
   cursor: pointer;
+}
+
+@media (max-width: 400) {
+  .chat-img {
+    height: 45px;
+    width: 96px;
+  }
+  .usermailchat {
+    height: 40px;
+    width: 120px;
+  }
 }
