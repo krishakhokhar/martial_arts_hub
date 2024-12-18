@@ -1,0 +1,209 @@
+.myprofilpage2-img {
+  height: 247px;
+  width: 230px;
+  border-radius: 12px;
+}
+.myprofilpage2 {
+  padding-top: 120px;
+}
+.name {
+  font-size: 30px;
+  font-weight: 900;
+  padding-top: 10px;
+}
+.name span {
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 9px;
+  color: #00000080;
+}
+.btn-edit {
+  width: 80px;
+  background-color: transparent;
+  color: black !important;
+  border: 1px solid #71717194;
+  margin-right: 4%;
+  font-size: 13px;
+}
+.btn-share {
+  width: 80px;
+  font-size: 13px;
+  background-color: #cb3530 !important;
+}
+.edit {
+  font-size: 20px;
+  text-align: center;
+  align-items: center;
+}
+.myprofile2head {
+  height: auto;
+  width: 270px;
+  border-radius: 20px;
+  border: 1px solid #0f0f0f33;
+}
+.myprofile2head ul {
+  list-style: none;
+  padding-left: 0px !important;
+}
+.myprofile2head ul li {
+  padding-top: 10px;
+  position: relative;
+  display: inline-block;
+  /* font-size: 20px; */
+  color: black;
+  padding-left: 31px;
+  cursor: pointer;
+  outline: none;
+}
+
+.myprofile2head li:focus {
+  font-weight: 700;
+}
+
+.myprofile2head li:focus::after {
+  content: "";
+  position: absolute;
+  left: 27px;
+  width: 90%;
+  font-weight: 600;
+  right: 0;
+  /* top: 1px; */
+  bottom: 0px;
+  height: 1px;
+  background-color: black;
+  transition: background-color 0.3s ease-in-out;
+}
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  width: 200px;
+  margin-left: 25px;
+  border: 0;
+  border-top: var(--bs-border-width) solid;
+  opacity: 0.25;
+}
+.head-button {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.head-button Button {
+  color: black !important;
+  background-color: transparent;
+  border: 1px solid #0f0f0f33;
+  width: 110px;
+}
+.support {
+  max-width: 545px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 36px;
+  font-weight: 600;
+}
+.profile-instructor p {
+  font-size: 17px;
+  max-width: 691px;
+  color: rgba(15, 15, 15, 0.7);
+}
+.profile-instructor {
+  background-color: #c6c4bd;
+  padding: 30px 30px 30px 50px;
+  width: 90%;
+  border-radius: 20px;
+}
+.aboutcins {
+  margin-top: 55px;
+  margin-bottom: 40px;
+  max-width: 678px;
+}
+.aboutcins p {
+  font-size: 17px;
+  color: rgba(15, 15, 15, 0.7);
+}
+.classabout {
+  color: rgba(15, 15, 15, 0.7);
+  font-size: 20px;
+}
+.hourclass {
+  font-size: 17px;
+  color: rgba(15, 15, 15, 0.7);
+  margin-top: 30px;
+  max-width: 700px;
+}
+.manicol {
+  padding-left: 45px !important;
+}
+.vrifyd {
+  font-size: 25px;
+  color: rgba(15, 15, 15, 0.7);
+}
+
+.expiryonce {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.expiryonce h3 {
+  margin-bottom: 20px;
+}
+.expiryonce ul li {
+  list-style: none;
+  line-height: 39px;
+  font-size: 17px;
+  /* max-width: 338px; */
+  color: rgba(15, 15, 15, 0.7);
+}
+ul {
+  padding-left: 0px !important;
+}
+.certification {
+  display: flex;
+ 
+}
+.seconsirification {
+  padding-left: 60px;
+}
+.rates {
+  display: flex;
+}
+.rates span {
+  font-size: 17px;
+  color: #cb3530;
+}
+.vrifyd1 {
+  font-size: 25px;
+  color: #cb3530;
+}
+.rates p {
+  padding-left: 30px;
+  color: rgba(15, 15, 15, 0.7);
+}
+
+
+@media (max-width: 768px) {
+  .head-button {
+    margin-top: 28px;
+    padding-bottom: 28px;
+  }
+  .support {
+    max-width: 365px;
+  }
+  .aboutcins,
+  .hourclass {
+    max-width: 324px;
+  }
+  .vrifyd,
+  .vrifyd1 {
+    font-size: 20px;
+  }
+  .seconsirification {
+    padding-left: 0px;
+  }
+  .certification,
+  .rates {
+    display: block;
+  }
+  .expiryonce p {
+    font-size: 13px;
+    max-width: 343px;
+  }
+}

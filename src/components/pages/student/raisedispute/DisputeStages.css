@@ -1,0 +1,163 @@
+/* Container */
+.dispute-stages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 40px auto;
+}
+.newdisputes h2 {
+  margin: 16px 40px;
+}
+/* Individual Stage */
+.stage {
+  position: relative;
+  width: 30%;
+  text-align: center;
+  padding: 25px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  clip-path: polygon(9% 0, 90% 0, 100% 50%, 90% 100%, 9% 100%, 17% 50%);
+  transition: background-color 0.3s ease;
+}
+
+.stage-1 {
+  background-color: rgba(52, 177, 117, 1);
+}
+.stage-2{
+  background-color: rgba(107, 107, 107, 1);
+}
+.stage-3{
+  background-color: rgba(154, 152, 146, 1);
+}
+
+.stage-title {
+  margin: 0;
+  font-size: 12px;
+  color: #ddd;
+}
+
+.stage-name {
+  margin: 5px 0 0;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.stageicone {
+  font-size: 30px;
+  color: rgba(181, 177, 177, 1);
+}
+.issue p {
+  color: rgba(113, 113, 113, 1);
+  line-height: 10px;
+}
+.issue h5 {
+  line-height: 60px;
+}
+.issue {
+  border: 1px solid rgba(15, 15, 15, 0.1);
+  border-radius: 15px;
+  margin-bottom: 35px;
+  padding: 9px 30px 2px 30px;
+}
+.filldata label {
+  font-size: 16px;
+  font-weight: 500;
+}
+.filldata input {
+  width: 90%;
+  border-radius: 9px;
+  background-color: rgba(218, 216, 208, 1);
+  padding: 18px;
+  border: none;
+  margin-top: 10px;
+  outline: none;
+}
+.filldata {
+  padding-top: 45px;
+  row-gap: 40px;
+}
+.file-input {
+  display: none;
+}
+.issustage {
+  margin-top: 10px;
+  border-radius: 15px;
+  border: none;
+  padding: 20px;
+  background-color: rgba(218, 216, 208, 1);
+  outline: none;
+}
+.upload-container {
+  margin-top: 10px;
+  width: 100%;
+  height: 208px;
+  border-radius: 9px;
+  background-color: rgba(218, 216, 208, 1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.upload-icon {
+  font-size: 50px;
+  color: #8a8a8a;
+  margin-left: auto;
+  display: block;
+  margin-right: auto;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+.upload-text {
+  font-size: 14px;
+  color: #8a8a8a;
+  text-align: center;
+}
+.submitdisputes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.submitdisputes button {
+  background-color: black;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+@media (max-width: 576px) {
+  .stage {
+    width: 160%;
+  }
+  .dispute-stages {
+    display: grid;
+    row-gap: 20px;
+  }
+  .stageicone {
+    display: none;
+  }
+  .newdisputes h2 {
+    text-align: center;
+  }
+  .issue p {
+    line-height: 20px;
+  }
+  .disputess{
+    margin-left: 20px
+  }
+  .issustage {
+    width: 350px;
+  }
+  .upload-container {
+    width: 88%;
+  }
+}

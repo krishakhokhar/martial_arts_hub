@@ -1,0 +1,202 @@
+.maininfo {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 115px;
+}
+.myprofileaarow {
+  font-size: 23px;
+}
+.myprofilefleximg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.myprofile2 {
+  width: 100%;
+}
+.myprofile2 h1 {
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  margin-top: 1.5rem;
+}
+.myprofile2 p {
+  margin-top: 0.25rem;
+  font-size: 15px;
+  color: #0f0f0fb3;
+}
+.proname {
+  font-weight: 500;
+  color: #0f0f0f80;
+  font-size: 17px;
+  padding-bottom: 10px;
+}
+.nameinsturctor {
+  width: 100%;
+  font-size: 17px;
+  padding-left: 1.5rem;
+  background-color: rgb(218 216 208);
+  border-radius: 15px;
+  height: 70px;
+  border: none;
+  outline: none;
+}
+.uplodimgprofile {
+  width: 245px;
+  background-color: rgb(218 216 208);
+  border-radius: 15px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  display: flex;
+}
+.uplodimgprofile2 {
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.myprocemera {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: #0f0f0f33;
+}
+.uplodimgprofile2 p {
+  color: #0f0f0f33;
+  font-weight: 500;
+  font-size: 13px;
+}
+.profile_picture {
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.image-preview{
+width: 120%;
+}
+.mailreqvest {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+  column-gap: 1.25rem;
+  row-gap: 2.25rem;
+  margin-top: 30px;
+}
+.proemailreqvest {
+  width: 100%;
+  font-size: 17px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: rgb(218 216 208);
+  height: 70px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+}
+.rhirdfilddate {
+  grid-column: span 2 / span 2;
+}
+.fileuplode {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.fileuplodedoc {
+  position: relative;
+  margin-top: 0.25rem;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: rgb(218 216 208);
+}
+.fileuplode p {
+  color: #0f0f0f33;
+  font-weight: 500;
+  font-size: 13px;
+}
+.fileuplodedoc input {
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.Hourlyrates {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: 2.25rem;
+  column-gap: 1.25rem;
+  display: grid;
+  margin-top: 75px;
+}
+.Hourlyrates h2 {
+  grid-column: span 2 / span 2;
+  font-weight: 600;
+  color: black;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.savrinfo {
+  height: 59px;
+  width: 251px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: black;
+}
+.savinfom{
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .myprofilefleximg {
+    display: block;
+  }
+  .maininfo {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .uplodimgprofile {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .mailreqvest {
+    display: block;
+    margin-top: 10px;
+  }
+  .Hourlyrates {
+    display: block;
+  }
+  .savrinfo {
+   margin: 0 auto;
+   display: block;
+  }
+  .savinfom{
+    margin:  0 auto;
+  }
+
+}
+  @media(max-width:1104px){
+    #proname1{
+        width: 280px ;
+      }
+      #proname2{
+        width: 215px;
+      }
+  }
+  .error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

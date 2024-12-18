@@ -1,0 +1,24 @@
+.ongoingstatus_abriotion {
+  background-color: rgba(225, 210, 209, 1);
+  color: rgba(203, 53, 48, 1);
+}
+.abration {
+  width: 95%;
+  height: 50px;
+  background-color: rgba(203, 53, 48, 1);
+  margin: 0px 25px 0px 25px;
+  border-radius: 10px;
+}
+.abration p {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+.stageicone3{
+    color: black;
+}

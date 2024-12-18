@@ -1,0 +1,34 @@
+.main-padding2 {
+  padding: 146px 200px 40px 200px;
+  background-color: rgb(225 223 215);
+}
+.img-div2 img {
+    width: 498px;
+    height: 664px;
+}
+.img-div2 {
+    display: block;
+    border-radius: 20px !important;
+    position: relative;
+    overflow: hidden;
+    margin-left: 100px;
+  }
+  .img-div2::after {
+    content: "";
+    background-image: linear-gradient(180deg, #09090900, #090909);
+    width: 100%;
+    height: 50%;
+    z-index: 20;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+  }
+  .img-div2 .karate2 {
+    width: 530px;
+    height: 743px;
+  }
+  @media (max-width: 1104px) {
+    .img-div2 img {
+      display: none;
+    }
+}

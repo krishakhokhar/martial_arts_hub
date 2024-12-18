@@ -1,0 +1,1004 @@
+:root {
+  --bgcolor: #e1dfd7;
+  --commnolor: black;
+  --textcolor: #0f0f0f80;
+}
+
+/* hero-section............................................................................ */
+.hero-section {
+  background-color: var(--bgcolor);
+  padding-bottom: 100px;
+  padding-top: 160px;
+}
+.hero-section h1 {
+  font-size: 70px;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 85px;
+}
+.hero-section p {
+  line-height: 31.9px;
+  font-size: 22px;
+  text-align: center;
+  max-width: 669px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 60px;
+    padding-top: 10px;
+  }
+  .hero-section p {
+    line-height: 31.9px;
+    padding-top: 10px;
+  }
+}
+/* .hero-section-end............................................................................ */
+
+/* start-button................................................................................... */
+
+.start-button {
+  position: relative;
+  font-weight: 400;
+  font-size: 20px !important;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 10px 25px;
+  border: 1px solid var(--commnolor);
+  background-color: var(--commnolor);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.start-button::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bgcolor);
+  z-index: -1;
+  transition: top 0.1s ease-in-out;
+}
+
+.start-button:hover::before {
+  top: 0;
+}
+
+.start-button:hover {
+  color: var(--commnolor) !important;
+}
+
+/* start-butoon end............................................................... */
+
+/* Already-Member-butoon............................................................... */
+
+.Already-Member {
+  position: relative;
+  font-weight: 400;
+  margin-left: 10px !important;
+  font-size: 20px !important;
+  display: flex;
+  width: 224px;
+  color: var(--commnolor) !important;
+  align-items: center;
+  height: 60px;
+  padding: 10px 29px;
+  border: 1px solid var(--commnolor);
+  background-color: var(--bgcolor);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.Already-Member::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--commnolor);
+  z-index: -1;
+  transition: top 0.1s ease-in-out;
+}
+
+.Already-Member:hover::after {
+  top: 0;
+}
+
+.Already-Member:hover {
+  color: white !important;
+}
+.btn {
+  display: flex !important;
+  justify-content: center !important;
+  padding-left: 55px;
+}
+/* Already-Member-butoon end............................................................... */
+
+@media only screen and (max-width: 768px) {
+  .btn {
+    display: block !important;
+  }
+  .start-button {
+    margin-left: 107px !important;
+    margin-top: 10px;
+  }
+  .Already-Member {
+    margin-left: 75px !important;
+    margin-top: 15px;
+  }
+}
+/* button-and................................................................ */
+
+/* grid-leyout.......................................................... */
+.section-2 {
+  background-color: var(--commnolor);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 76px 32px 25px 23px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.section-2 img {
+  height: auto;
+  max-width: 100%;
+}
+.section-2 h2 {
+  color: white !important;
+  line-height: 26.4px;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 10px;
+}
+.section-2 p {
+  color: #ffffff80;
+  line-height: 18.2px;
+  font-size: 13px;
+  text-align: center;
+  max-width: 195px;
+  margin-top: 5px;
+}
+/* grid-leyout-end..................................................................... */
+
+/* .......................describe.................................................. */
+.main-discipline {
+  background-color: var(--bgcolor);
+}
+.describe {
+  padding-left: 58px;
+  padding-right: 58px;
+  background-color: #6b6b6b;
+  border-radius: 20px;
+  padding-bottom: 58px;
+  padding-top: 58px;
+}
+.notify h2 {
+  font-weight: 600;
+  color: white;
+  font-size: 36px;
+  margin-top: 27px;
+}
+.notify p {
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  max-width: 429px;
+  color: white;
+}
+.noyify-input {
+  transform: translate(454px, 10px);
+}
+.noyify-input input {
+  width: 485px;
+  height: 49px;
+  border-radius: 31px;
+  background-color: #f6f5f91a;
+  color: white !important;
+  padding-left: 32px;
+  border: 1px solid rgb(168, 168, 168);
+  outline: none;
+  font-family: inherit;
+  font-size: 19px !important;
+}
+.noyify-input textarea {
+  color: white !important;
+  width: 485px;
+  margin-top: 17px;
+  padding-top: 9px;
+  height: 88px;
+  background-color: #f6f5f91a;
+  border: 1px solid rgb(168, 168, 168);
+  padding-left: 32px;
+  border-radius: 15px;
+  outline: none;
+  font-family: inherit;
+  font-size: 19px !important;
+}
+.noyify-input ::placeholder {
+  color: rgb(180, 180, 180) !important;
+  font-size: 19px !important;
+}
+.notify-btn {
+  background-color: var(--commnolor);
+  color: white !important;
+  width: 105px;
+  margin-top: 10px;
+  margin-left: 379px;
+}
+.desc {
+  display: flex;
+}
+
+@media only screen and (max-width: 820px),
+  only screen and (max-width: 834px),
+  only screen and (width: 884px) and (orientation: portrait),
+  only screen and (width: 1688px) and (orientation: landscape),
+  only screen and (width: 834px) and (orientation: portrait),
+  /* iPad Pro 11 Portrait */ only screen and (width: 1194px) and (orientation: landscape) /* iPad Pro 11 Landscape */ {
+  .desc {
+    display: block;
+  }
+
+  .noyify-input {
+    transform: translate(0px, 10px);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .notify-btn {
+    margin-left: 0px;
+  }
+  .noyify-input {
+    transform: translate(0px, 0px);
+  }
+  .desc {
+    display: block !important;
+  }
+  .describe {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .noyify-input textarea,
+  .noyify-input input {
+    width: 340px;
+  }
+  .divtion {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+/* .......................describe....end.............................................. */
+
+/*........................................................ martial arts hub................. */
+
+.martial {
+  background-color: var(--bgcolor);
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+.title {
+  font-size: 70px;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 85px;
+  color: #c2c2c2c2;
+  letter-spacing: -0.04em;
+  line-height: 46.8px;
+}
+.who-are h2 {
+  line-height: 0.5rem;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+}
+.who-are p {
+  text-align: center;
+  color: var(--textcolor);
+  font-size: 20px;
+  line-height: 30px;
+  max-width: 991px;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+:root {
+  --commncolor: black;
+}
+
+.lernmore-btn {
+  background-color: var(--commncolor);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 19px;
+  height: 50px;
+  border: 1px solid var(--commncolor);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.lernmore-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--commncolor);
+  z-index: -1;
+  transition: top 0.2s ease-in-out;
+}
+
+.lernmore-btn:hover::after {
+  top: -100%;
+}
+
+.lernmore-btn:hover {
+  color: black !important;
+  background-color: transparent;
+}
+
+.arrow {
+  transform: rotate(45deg);
+  margin-left: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 58px;
+  }
+}
+/*........................................................ martial arts hub..end............... */
+
+/*............................. Ready to Learn?.............................................. */
+.redytolern {
+  padding-bottom: 107px;
+  padding-top: 107px;
+  background-color: var(--commncolor);
+}
+.redytolern h2 {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+}
+.redytolern p {
+  color: #ffffff80;
+  font-size: 25px;
+  line-height: 1.75rem;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Start-Today1 {
+  color: var(--commncolor) !important;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.75rem;
+  height: 51px;
+  width: 175px;
+}
+.lernmore-btn1 {
+  color: white !important;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.75rem;
+  height: 51px;
+  width: 175px;
+  border: 1px solid white;
+}
+.btns-ls2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+@media only screen and (max-width: 768px) {
+  .btns-ls2 {
+    display: block;
+    text-align: center;
+  }
+  .lernmore-btn1 {
+    margin-top: 20px;
+  }
+  .redytolern p {
+    font-size: 22px;
+  }
+}
+/*............................. Ready to Learn?..end............................................ */
+
+/* ....................................................Why Join Us............................. */
+.whay-join {
+  padding-bottom: 124px;
+  padding-top: 124px;
+  background-color: var(--bgcolor);
+}
+.whay {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+}
+.circal {
+  display: flex;
+  background-color: #71717126;
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 429px;
+  margin-top: 188px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.circal2 {
+  background-color: var(--bgcolor);
+  border-radius: 9999px;
+  opacity: 1px;
+  border: 2px solid var(--commncolor);
+  justify-content: center;
+  align-items: center;
+  width: 285px;
+  transform: translate(67px, 71px);
+  height: 285px;
+  display: flex;
+}
+.circal2 h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--commncolor);
+  letter-spacing: -1px;
+}
+.expert {
+  top: -23%;
+  left: -50%;
+  position: absolute;
+}
+.under-expert {
+  padding-top: 35px;
+  padding-left: 32px;
+  border-radius: 1.5rem;
+  width: 325px;
+  height: 160px;
+  position: relative;
+  background-color: rgb(113 113 113);
+}
+.under-expert h2 {
+  font-size: 1.25rem;
+  line-height: 13px;
+  font-weight: 700;
+  color: white;
+  text-align: justify;
+}
+.under-expert p {
+  color: #ffffff80;
+  font-size: 15px;
+  max-width: 255px;
+}
+.bordercercl {
+  color: white;
+  font-size: 13px;
+  background-color: rgb(113 113 113);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  right: 0.5rem;
+  bottom: -13px;
+  position: absolute;
+}
+.under-expert2 {
+  padding-top: 35px;
+  padding-left: 32px;
+  border-radius: 1.5rem;
+  /* right: -50px; */
+  width: 325px;
+  height: 160px;
+  position: relative;
+  background-color: var(--commncolor);
+}
+.under-expert2 h2 {
+  font-size: 1.25rem;
+  line-height: 13px;
+  font-weight: 700;
+  color: white;
+  text-align: justify;
+}
+.under-expert2 p {
+  color: #ffffff80;
+  font-size: 14px;
+  max-width: 255px;
+}
+.expert1 {
+  top: -24%;
+  left: 70%;
+  position: absolute;
+}
+.bordercercl1 {
+  color: white;
+  font-size: 13px;
+  background-color: var(--commncolor);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  left: 0.5rem;
+  bottom: -13px;
+  position: absolute;
+}
+
+.expert2 {
+  top: 50%;
+  right: -73%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+.bordercercl3 {
+  color: white;
+  font-size: 13px;
+  background-color: rgb(113 113 113);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  left: 0.5rem;
+  bottom: -13px;
+  position: absolute;
+  transform: translate(-25px, -71px);
+}
+
+.expert3 {
+  right: -50%;
+  bottom: -23%;
+  position: absolute;
+}
+.bordercercl4 {
+  transform: translate(14px, -151px);
+  color: white;
+  font-size: 13px;
+  background-color: var(--commncolor);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  left: 0.5rem;
+  bottom: -13px;
+  position: absolute;
+}
+.expert4 {
+  position: absolute;
+  left: -50%;
+  bottom: -23%;
+}
+.bordercercl5 {
+  transform: translate(245px, -150px);
+  color: white;
+  font-size: 13px;
+  background-color: rgb(113 113 113);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  left: 0.5rem;
+  bottom: -13px;
+  position: absolute;
+}
+.expert5 {
+  top: 50%;
+  left: -73%;
+  position: absolute;
+  transform: translateY(-50%);
+}
+.bordercercl6 {
+  color: white;
+  font-size: 13px;
+  background-color: rgb(113 113 113);
+  border: 3px solid rgb(199 198 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  left: 20.5rem;
+  bottom: -13px;
+  position: absolute;
+  transform: translate(-25px, -71px);
+}
+
+.circal {
+  display: block;
+}
+
+.disply {
+  display: none;
+}
+
+@media only screen and (max-width: 1030px) {
+  .circal {
+    display: none;
+  }
+  .disply {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .disply {
+    display: block;
+    padding-top: 40px;
+  }
+  .Instructors,
+  .Instructors2 {
+    margin-top: 25px;
+  }
+}
+
+.Instructors {
+  padding-top: 35px;
+  padding-left: 32px;
+  position: relative;
+  height: 160px;
+  width: 100%;
+  background-color: rgb(113, 113, 113);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.Instructors h2,
+.Instructors2 h2 {
+  font-weight: 600;
+  font-size: 23px;
+  color: white;
+  margin: 0;
+}
+
+.Instructors p,
+.Instructors2 p {
+  color: #ffffff80;
+  max-width: 255px;
+  font-size: 14px;
+  margin: 0;
+}
+
+.name-1,
+.name-2 {
+  color: white;
+  font-size: 13px;
+  border: 3px solid rgb(199, 198, 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 40px;
+  display: flex;
+  position: absolute;
+  bottom: -8px;
+  right: 30px;
+  transform: translate(7px);
+}
+
+.name-1 {
+  background-color: rgb(113, 113, 113);
+}
+
+.name-2 {
+  background-color: var(--commncolor);
+}
+
+.Instructors2 {
+  padding-top: 35px;
+  padding-left: 32px;
+  position: relative;
+  height: 160px;
+  width: 100%;
+  background-color: var(--commncolor);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* ....................................................Why Join Us.end............................ */
+/* Our Instructors..................................................................... */
+.our {
+  padding-bottom: 75px;
+  padding-top: 124px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--bgcolor);
+}
+.our h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 23px;
+  padding-bottom: 30px;
+}
+@media only screen and (max-width: 768px) {
+  .our{
+    padding-top:40px;
+  }
+}
+
+/* Our Instructors..end.............................................................. */
+/* app-dwonlode....................................................................... */
+.app {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 107px;
+  background-color: var(--commncolor);
+}
+.app h2 {
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+.app span {
+  border-bottom: 2px solid white;
+}
+.app p {
+  color: #ffffff80;
+  font-size: 22px;
+  max-width: 820px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.newget {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 32px;
+}
+/* app-dwonlode-end................................................................................. */
+/*.............................. How does it Work?......................................... */
+.Howdoes {
+  background-color: var(--bgcolor);
+  padding-top: 124px;
+}
+.Howdoes h2 {
+  font-size: 40px;
+  text-align: center;
+}
+.Howdoes p {
+  font-size: 20px;
+  color: var(--textcolor);
+  line-height: 28px;
+  text-align: center;
+}
+.circal-greed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+  padding-bottom: 124px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.greed-1 {
+  background-color: rgb(199, 198, 191);
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  height: 192px;
+  width: 192px;
+  display: flex;
+  position: relative;
+}
+
+.signup {
+  font-size: 20px !important;
+  line-height: 28px;
+  max-width: 205px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.Quickly {
+  text-align: center;
+  max-width: 214px;
+  font-size: 16px !important;
+  line-height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  counter-reset: var(--textcolor);
+}
+
+.circal-greed::after {
+  border: 1px dashed #0006;
+  content: "";
+  height: 0;
+  left: 40;
+  position: absolute;
+  top: 24%;
+  transform: translateY(-50%);
+  width: 90%;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.circal-greed .greed-1 {
+  z-index: 1;
+}
+@media (max-width: 1000px) {
+  .circal-greed::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .circal-greed {
+    justify-content: center;
+  }
+  .signup {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .circal-greed > div {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .circal-greed .greed-1 {
+    margin: 0 auto;
+  }
+  .circal-greed::after {
+    display: none;
+  }
+  .Howdoes h2 {
+    font-size: 38px;
+  }
+  .lead-btn {
+    margin-left: 45px;
+  }
+}
+.section-type {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 48px;
+  padding-top: 48px;
+  background-color: rgb(107 107 107);
+}
+.second-section {
+  row-gap: 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.second-section span {
+  font-weight: 700;
+}
+.second-section p {
+  font-weight: 300;
+  font-size: 25px;
+  max-width: 960px;
+  color: white;
+}
+.lead-btn {
+  font-size: 18px;
+  font-weight: 400;
+  width: 171px;
+  height: 56px;
+  background-color: white;
+  color: var(--commncolor) !important;
+}
+
+/*.............................. How does it Work end?......................................... */
+
+/* Frequently..................................................... */
+.Frequently {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 124px;
+  padding-top: 124px;
+  background-color: var(--bgcolor);
+}
+.Frequently h2 {
+  font-size: 40px;
+  text-align: center;
+}
+.Frequently p {
+  font-size: 19px;
+  line-height: 28px;
+  color: var(--textcolor);
+  max-width: 750px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.according {
+  margin-top: 48px;
+}
+.accordion-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+  font-size: 1rem;
+  color: var(--commncolor) !important;
+  text-align: left;
+  background-color: #ffffff80 !important;
+  border: none !important;
+  border-radius: none !important;
+  overflow-anchor: none;
+  transition: var(--bs-accordion-transition);
+}
+.accordion-button:not(.collapsed) {
+  background-color: #ffffff80 !important;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.accordion-item {
+  /* height: 100px; */
+  padding: 34px;
+  border-radius: 15px !important;
+  margin-top: 10px;
+}
+.accordion-button {
+  /* font-size: 25px !important; */
+  font-weight: 500;
+}
+.accordion-body {
+  color: var(--textcolor);
+}
+/* Frequently.....end................................................ */
+

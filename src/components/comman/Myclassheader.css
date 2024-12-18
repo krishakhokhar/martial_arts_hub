@@ -1,0 +1,37 @@
+.myclass-main {
+  /* position: absolute; */
+  padding-top: 170px;
+  max-width: 1400px;
+}
+.myclass-main h2 {
+  padding: 30px;
+}
+.btn-myclass {
+  display: flex;
+  padding-left: 26px;
+  gap: 10px;
+}
+.classesdif {
+  background-color: transparent;
+  color: black !important;
+  border: 1px solid #0f0f0f59;
+  border-radius: 50px;
+  text-decoration: none;
+  padding: 14px;
+}
+.classesdif.active-btn {
+  background-color: rgba(107, 107, 107, 1);
+  color: white !important;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .classesdif {
+    padding: 7px !important;
+    font-size: 13px !important;
+  }
+  .btn-myclass {
+    padding-left: 10px;
+    gap: 5spx;
+  }
+}

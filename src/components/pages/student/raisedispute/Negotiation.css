@@ -1,0 +1,102 @@
+.nagotion {
+  background-color: rgba(210, 207, 201, 1);
+  border-radius: 20px;
+  margin-bottom: 75px;
+}
+.nagotion p {
+  font-size: 17px;
+  padding: 33px 20px 20px 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.send-msg-nagiton {
+  max-width: 529px;
+  background-color: rgba(207, 222, 215, 1);
+}
+.send-msg-nagiton p {
+  color: rgba(113, 113, 113, 1);
+}
+#stage-1 {
+  background-color: black;
+}
+#stage-2 {
+  background-color: rgba(52, 177, 117, 1);
+}
+#stageicone {
+  color: rgba(52, 177, 117, 1);
+}
+.resev-msg-negition {
+  max-width: 612px;
+  background-color: rgba(225, 210, 209, 1);
+}
+.resev-msg-negition p {
+  color: rgba(113, 113, 113, 1);
+}
+.negotuonschats {
+  border: 1px solid rgba(15, 15, 15, 0.15);
+  height: 481px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.reseve-msg-negotiotion1 {
+  color: rgba(203, 53, 48, 1);
+}
+.send-msg-user-negotion input {
+  border: none;
+  outline: none;
+  background-color: rgba(218, 216, 208, 1);
+}
+
+.negotionsstatusbill b {
+  color: rgba(107, 107, 107, 1);
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.nagotionsbill2 b {
+  color: rgba(107, 107, 107, 1);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+.priofstatus {
+  font-size: 25px;
+  color: rgba(203, 53, 48, 1);
+  font-weight: 600;
+}
+.priofstatus1 {
+  font-size: 20px;
+  color: rgba(203, 53, 48, 1);
+  font-weight: 600;
+}
+.ongoingstatus {
+  background-color: rgba(207, 222, 215, 1);
+  color: rgba(52, 177, 117, 1);
+  padding: 20px 0px 1px 20px;
+  font-size: 17px;
+  margin-left: 2%;
+  border-radius: 20px;
+  width: 76%;
+  font-weight: 500;
+}
+.stustes {
+  border: 1px solid rgba(15, 15, 15, 0.15);
+  border-radius: 20px;
+  padding: 22px;
+  margin-left: 20px;
+}
+.scroollauto {
+  overflow: hidden;
+  max-height: 400px;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 150px 25px 25px 25px !important;
+}
+@media(max-width:576px){
+  .stustes{
+    margin-left: 0px;
+  }
+}
