@@ -401,13 +401,17 @@
   cursor: pointer;
 }
 
-@media (max-width: 400) {
+@media (max-width:576px) {
   .chat-img {
     height: 45px;
     width: 96px;
   }
   .usermailchat {
     height: 40px;
-    width: 120px;
+    width: 153px;
+    margin-right: 34px;
+  }
+  .send-msg-user input{
+    width: 100%;
   }
 }
