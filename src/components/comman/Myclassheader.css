@@ -35,3 +35,10 @@
     gap: 5spx;
   }
 }
+@media (max-width: 400px) {
+  .classesdif {
+    padding: 7px !important;
+    font-size: 10px !important;
+  }
+ 
+}
