@@ -313,7 +313,7 @@
 }
 .usermailchat {
   height: 40px;
-  width: 40px;
+  width: 84px;
   background-color: black;
   border-radius: 50%;
   text-align: center;
@@ -322,7 +322,7 @@
   align-items: center;
   color: white;
   margin-left: 9px;
-  margin-right: 48px;
+  margin-right: 5px;
 }
 .send-msg-chat {
   max-width: 320px;
@@ -352,8 +352,8 @@
   font-size: 13px;
 }
 .chat-img {
-  height: 45px;
-  width: 45px;
+  height: 46px;
+  width: 90px;
   border-radius: 100%;
 }
 .resev-msg-chat {

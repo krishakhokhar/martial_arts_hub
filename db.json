@@ -1,110 +1,14 @@
 {
-  "Signup": [],
+  "Signup": [
+      
+  ],
   "insructorsignup": [
-    {
-      "id": "2182",
-      "email": "votenawe@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "49a0",
-      "email": "wered@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "dbbe",
-      "email": "joqir@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "d45d",
-      "email": "jimahen@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "ecdc",
-      "email": "geqel@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "3dd2",
-      "email": "sobi@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "156a",
-      "email": "ciqiduvy@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "ea0b",
-      "email": "munev@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "8dd6",
-      "email": "wyvavy@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "08d8",
-      "email": "munycynas@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    },
-    {
-      "id": "65cf",
-      "email": "xinunecylo@mailinator.com",
-      "password": "Pa$$w0rd!",
-      "confirmpass": "Pa$$w0rd!"
-    }
   ],
   "profile": [
     {
-      "id": "9585",
-      "name": "wered",
-      "email": "wered@mailinator.com",
-      "mobile": "1234567890",
-      "availability": "2024-12-17",
-      "bio": "qwert",
-      "tagline": "asdrft",
-      "experience": "qwert",
-      "trainingHistory": "Zsdfgh",
-      "certifications": "fghj",
-      "keywords": "sdfg",
-      "hourlyRate": "2",
-      "sessionType": "htgjhyf",
-      "privettypes": "edaswrfewdg",
-      "privateLessonRate": "2",
-      "idProof": {},
-      "profile_picture": {}
     },
     {
-      "id": "b687",
-      "name": "",
-      "email": "geqel@mailinator.com",
-      "mobile": "",
-      "availability": "",
-      "bio": "",
-      "tagline": "",
-      "experience": "",
-      "trainingHistory": "",
-      "certifications": "",
-      "keywords": "",
-      "hourlyRate": "",
-      "sessionType": "",
-      "privettypes": "",
-      "privateLessonRate": "",
-      "idProof": null
+      
     }
   ]
 }

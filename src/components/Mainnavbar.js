@@ -18,6 +18,7 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { TiWarning } from 'react-icons/ti';
+import baseUrl from '../baseUrl';
 
 const dropdownitem = [
   { name: "Dashboard", url: "/Dashbord" },
@@ -115,7 +116,7 @@ function Mainnavbar({ text }) {
       setUserName(formData.name);
 
 
-      axios.post("http://localhost:3000/Signup", {
+      axios.post(`${baseUrl}/student/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -148,7 +149,7 @@ function Mainnavbar({ text }) {
     e.preventDefault();
     if (validateForm1()) {
       try {
-        const response = await axios.post("https://martial-arts-hub-backend.onrender.com/student/login", {
+        const response = await axios.post(`${baseUrl}/student/login`, {
           id: email,
           password: password,
         });
