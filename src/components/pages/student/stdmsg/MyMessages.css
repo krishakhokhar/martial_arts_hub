@@ -415,3 +415,17 @@
     width: 100%;
   }
 }
+@media (max-width:300px) {
+  .chat-img {
+    height: 45px;
+    width: 96px;
+  }
+  .usermailchat {
+    height: 40px;
+    width: 153px;
+    margin-right: 34px;
+  }
+  .send-msg-user input{
+    width: 100%;
+  }
+}
