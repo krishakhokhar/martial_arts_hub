@@ -57,8 +57,7 @@
   transform: translate(255px, -43px);
 }
 
-@media only screen and (max-width: 884px){
-
+@media only screen and (max-width: 884px) {
 }
 @media only screen and (max-width: 768px) {
   /* .Categories h2 {
@@ -155,7 +154,8 @@
   margin-top: -15px !important;
 }
 .btn-3 {
-  margin-left: 1350px !important;
+  display: flex;
+  justify-content: end;
 }
 .slick-dots {
   bottom: -25px !important;
@@ -236,23 +236,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (width: 800px) and (orientation: portrait),
-       only screen and (width: 1280px) and (orientation: landscape),
-       only screen and (min-width: 820px) and (max-width: 1194px) {
-  
+  only screen and (width: 1280px) and (orientation: landscape),
+  only screen and (min-width: 820px) and (max-width: 1194px) {
   .slide-card p {
     color: #0f0f0fb3;
-    font-weight: 300; 
+    font-weight: 300;
     font-size: 15px;
     line-height: 17px;
     max-width: 221px;
     text-align: justify;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   .slide-card img {
     width: 235px !important;
   }
-  
+
   .btn2 {
     background-color: transparent;
     color: var(--communcolor) !important;

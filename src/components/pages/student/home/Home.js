@@ -199,7 +199,7 @@ function Home() {
             </section>
             {/* ............................................Why Join Us.....end............................................. */}
             {/*................................... Our Instructors............................... */}
-            <section className='md:py-space pb-20 px-3 lg:px-8 our '>
+            <section className='md:py-space pb-20 lg:px-8 our '>
                 <h2>Our Instructors</h2>
                 <Secondslide />
             </section>

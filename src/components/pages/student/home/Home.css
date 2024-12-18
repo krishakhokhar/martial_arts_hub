@@ -199,12 +199,11 @@
   max-width: 429px;
   color: white;
 }
-.noyify-input {
-  transform: translate(454px, 10px);
-}
+
 .noyify-input input {
   width: 485px;
   height: 49px;
+  display: flex;
   border-radius: 31px;
   background-color: #f6f5f91a;
   color: white !important;
@@ -241,6 +240,7 @@
 }
 .desc {
   display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 820px),

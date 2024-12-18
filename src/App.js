@@ -37,7 +37,6 @@ function App() {
     <div>
       {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && <Mainnavbar text={navItems} />}
       <Routes>
-        {/* student...................................................... */}
         <Route path="/" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Dashbord" element={<Dashboard />} />
