@@ -19,7 +19,7 @@ header::before {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #e1dfd799;
+  background-color: initial;
   backdrop-filter: blur(10px);
   pointer-events: none;
   transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
@@ -32,7 +32,10 @@ header::before {
   margin: 0 auto;
 }
 .logo {
-  width: 160px;
+  text-decoration: none;
+  color: black;
+  font-size: 29px;
+  font-weight: 900;
 }
 .navbar-toggler {
   border: none !important;
@@ -797,17 +800,30 @@ width: 100px !important;
 .navbar-nav .nav-link.active {
   font-weight: 700;
 }
-/* .navbar-nav.active::after{
-  content: "";
-  position: absolute;
-  bottom: 1px !important;
-  left: 39% !important;
-  transform: translateX(-50%);
-  width: 54% !important;
-  height: 2px;
+.bg-dark-500 {
+  background-color:black;
+  color: #e1dfd7;
+}
+header.bg-dark-500 .navbaratag .nav-link {
+  color: rgba(255, 255, 255, 1); 
+}
+.bg-dark-500 .btn-success {
+  background-color: rgba(255, 255, 255, 1) !important; 
+  color: black !important;
+}
+.bg-dark-500 .dropdown {
+  border: 2px solid rgba(255, 255, 255, 1) !important; 
+}
+.bg-dark-500 .logo{
+  color: rgba(255, 255, 255, 1);
+}
+/* .bg-dark-500 .nav-link.active::after{
   background-color: white;
 } */
 
+.bg-transparent {
+  background-color: transparent;
+}
 .navbar-expand-lg .navbar-nav .nav-link {
   padding-left: 20px !important;
 }

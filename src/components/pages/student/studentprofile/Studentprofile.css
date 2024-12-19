@@ -1,0 +1,62 @@
+.studentprofile {
+  background-color: black;
+}
+.rightarrow {
+  font-size: 30px;
+  color: rgba(225, 223, 215, 0.2);
+}
+.studentprofile_section h2 {
+  color: white;
+  max-width: 605px;
+  color: white;
+  max-width: 605px;
+  text-align: right;
+  justify-content: end;
+  align-items: center;
+}
+.studentprofile_section {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+.userpro {
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  /* position: absolute; */
+  background-color: aliceblue;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 150px;
+  border-radius: 50%;
+  margin-top: -20%;
+  margin-left: 45px;
+}
+.header_profile {
+  padding: 50px 0px 50px 100px;
+}
+.header_profile a {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgba(15, 15, 15, 0.7);
+  line-height: 44px;
+  font-weight: 400;
+}
+.asstudentname{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    font-weight: 400;
+}
+.profile_section2{
+    padding: 30px;
+}
+.profile_section2 h2{
+    font-size: 50px;
+    font-weight: 700;
+}
+@media (max-width: 768px) {
+  .userpro {
+    margin-top: 10px;
+  }
+}

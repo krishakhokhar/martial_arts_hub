@@ -123,7 +123,7 @@
   gap: 20px;
 }
 .reqvest {
-  width: 515px;
+  width: 560px;
   height: 375px;
   background-color: #d9d7cf;
   border-radius: 25px;
@@ -179,7 +179,7 @@
 }
 
 .Payments {
-  width: 575px;
+  width: 660px;
   height: 375px;
   background-color: #d9d7cf;
   border-radius: 25px;
@@ -249,7 +249,7 @@
 }
 .Recent {
   position: absolute;
-  width: 1101px;
+  width: 1234px;
   height: 303px;
   background-color: #d9d7cf;
   border-radius: 25px;

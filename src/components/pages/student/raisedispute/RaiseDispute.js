@@ -44,6 +44,10 @@ function RaiseDispute() {
   const handleStageClick = () => {
     navigate('/DisputeStages')
   }
+  const navigate1 = useNavigate();
+  const negotiation = () => {
+    navigate1('/Negotiation')
+  }
   const location = useLocation();
   return (
     <div>
@@ -59,7 +63,7 @@ function RaiseDispute() {
             </div>
           ))}
         </div>
-        <div className="disputes" style={{ width: "108%" }}>
+        <div className="disputes" style={{ width: "120%" }}>
           <table className="tabledispte" style={{ width: "100%", border: "1px solid red" }}>
             <thead className='headertable'>
               <tr >
@@ -81,7 +85,7 @@ function RaiseDispute() {
                   <td>${dispute.DisputeAmount}</td>
                   <td>{dispute.status}</td>
                   <td>{dispute.timeToRespond}</td>
-                  <td><button className='disputebutton'>{dispute.button}</button></td>
+                  <td><button className='disputebutton' onClick={negotiation}>{dispute.button}</button></td>
                 </tr>
               ))}
             </tbody>

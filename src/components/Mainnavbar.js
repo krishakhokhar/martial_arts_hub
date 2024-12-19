@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
@@ -24,11 +25,12 @@ const dropdownitem = [
   { name: "Dashboard", url: "/Dashbord" },
   { name: "My Profile", url: "/Studentprofile" },
   { name: "Messages", url: "/MyMessages" },
-]
+];
 
 function Mainnavbar({ text }) {
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showLoginSuccessModal, setShowLoginSuccessModal] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -42,11 +44,15 @@ function Mainnavbar({ text }) {
   const handleClose = () => setShowOffcanvas(false);
   const handleShow = () => setShowOffcanvas(true);
   const closeLoginModal = () => setShowLoginModal(false);
+
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
-    closeLoginModal();
-    navigate('/')
-  }
+    openLoginModal();
+  };
+  const closeLoginSuccessModal = () => {
+    setShowLoginSuccessModal(false); // Close the modal
+    navigate('/'); // Redirect to home page
+  };
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
@@ -55,7 +61,7 @@ function Mainnavbar({ text }) {
     name: '',
     email: '',
     password: '',
-    confirmpass: ''
+    confirm_password: ''
   });
 
   const handleChange = (e) => {
@@ -91,46 +97,49 @@ function Mainnavbar({ text }) {
     } else if (formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters!';
     }
-    if (!formData.confirmpass) {
-      newErrors.confirmpass = 'Confirm password is required!';
-    } else if (formData.confirmpass !== formData.password) {
-      newErrors.confirmpass = 'Passwords do not match!';
+    if (!formData.confirm_password) {
+      newErrors.confirm_password = 'Confirm password is required!';
+    } else if (formData.confirm_password !== formData.password) {
+      newErrors.confirm_password = 'Passwords do not match!';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const postData = (event) => {
-    event.preventDefault();
-    if (validateForm()) {
-      setShowSignUpModal(false);
-      setShowSuccessModal(true);
-      setIsSignedUp(true);
+  const postData = async (event) => {
+    try {
+      event.preventDefault();
+      if (validateForm()) {
+        setShowSignUpModal(false);
+        setShowSuccessModal(true);
+        setIsSignedUp(true);
 
+        localStorage.setItem('userEmail', formData.email);
+        localStorage.setItem('userName', formData.name);
 
-      localStorage.setItem('userEmail', formData.email);
-      localStorage.setItem('userName', formData.name);
+        setUserEmail(formData.email);
+        setUserName(formData.name);
 
-      setUserEmail(formData.email);
-      setUserName(formData.name);
+        const response = await axios.post(`${baseUrl}/student/signup`, {
 
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          confrim_password: formData.confirm_password,
+        });
 
-      axios.post(`${baseUrl}/student/signup`, {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        confirmpass: formData.confirmpass,
-      })
-        .then(() => {
-          setFormData({ name: '', email: '', password: '', confirmpass: '' });
+        console.log(response, "==============>response");
+
+        if (response) {
+          setFormData({ name: '', email: '', password: '', confirm_password: '' });
           setErrors({});
-        })
-        .catch((error) => console.error("Error:", error));
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
-
-
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -150,12 +159,12 @@ function Mainnavbar({ text }) {
     if (validateForm1()) {
       try {
         const response = await axios.post(`${baseUrl}/student/login`, {
-          id: email,
-          password: password,
+          email: email,
+          password: password
         });
         if (response.status === 200) {
-          closeLoginModal();
-          setShowSuccessModal(true);
+          closeLoginModal(); 
+          setShowLoginSuccessModal(true);
           setUserEmail(email);
         }
       } catch (error) {
@@ -182,27 +191,26 @@ function Mainnavbar({ text }) {
     navigate("/");
   };
 
-  const Navigat = useNavigate("")
+  const Navigat = useNavigate("");
   const handleclick = () => {
     Navigat("/Becomeinlogin");
     if (showOffcanvas) {
-      handleClose()
+      handleClose();
     }
   };
   const handlenavitemclick = () => {
     if (showOffcanvas) {
-      handleClose()
+      handleClose();
     }
-  }
-
-
+  };
+  const isProfilePage = location.pathname === "/Studentprofile";
   return (
     <div id="main-content">
-      <header className="top-0 left-0 z-[9] bg-transparent fixed-top" >
+      <header className={`top-0 left-0 z-[9] fixed-top ${isProfilePage ? "bg-dark-500" : "bg-transparent"}`}>
         <div className="container">
           <Navbar expand="lg" className="mx-auto flex items-center justify-between p-6 lg:px-8">
             <Navbar.Brand href="#home" className="flex flex-1">
-              <img src={logo} alt="Logo" className="logo font-extrabold text-lg leading-[21.6px] tracking-[-1px]" />
+              <Link className='logo'>martial arts hub.</Link>
             </Navbar.Brand>
 
             <div className="flex lg:hidden toggle destop-toggle">
@@ -210,18 +218,16 @@ function Mainnavbar({ text }) {
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div className="other-screen-button flex items-center become3">
-                {/* Show buttons in toggle menu when user is not signed up */}
                 {!isSignedUp && (
                   <>
-                    <button className="badge rounded-pill Login1 text-sm  rounded-full py-[5px] px-[13px]" onClick={openLoginModal}>
+                    <button className="badge rounded-pill Login1 text-sm rounded-full py-[5px] px-[13px]" onClick={openLoginModal}>
                       Login
                     </button>
                     <button className="badge rounded-pill Become" onClick={handleclick}>Become an Instructor</button>
-
                   </>
                 )}
                 {isSignedUp && (
-                  <Dropdown align="end" className="drop">
+                  <Dropdown align="end" className={`dropdown ${isProfilePage ? 'white-border' : ''}`}>
                     <Dropdown.Toggle variant="success" id="dropdown-basic" className="profile-button">
                       {userEmail[0].toUpperCase()}
                     </Dropdown.Toggle>
@@ -258,14 +264,12 @@ function Mainnavbar({ text }) {
                   </Link>
                 ))}
                 <div className="line-hr"></div>
-                {/* Show buttons in toggle menu when user is not signed up */}
                 {!isSignedUp && (
                   <>
-                    <button className="badge rounded-pill Login1 text-sm border  rounded-full py-[5px] px-[13px]" onClick={openLoginModal}>
+                    <button className="badge rounded-pill Login1 text-sm border rounded-full py-[5px] px-[13px]" onClick={openLoginModal}>
                       Login
                     </button>
                     <button className="badge rounded-pill Become" onClick={handleclick}>Become an Instructor</button>
-
                   </>
                 )}
               </Offcanvas.Body>
@@ -383,7 +387,8 @@ function Mainnavbar({ text }) {
                     <div className='tobtn'>
                       <Button text={"Log In to your account"} className="loginaccount" />
                       <button className='loginaccount2'> <AiOutlineGoogle className='iconeg' />Log In with Google</button>
-                    </div ><p className='signop'>Don’t have an account? <span className='link' onClick={openSignUpModal}>Sign Up</span></p>
+                    </div>
+                    <p className='signop'>Don’t have an account? <span className='link' onClick={openSignUpModal}>Sign Up</span></p>
                   </form>
                 </div>
               </div>
@@ -460,10 +465,10 @@ function Mainnavbar({ text }) {
                           <input
                             type={isPasswordVisible ? "text" : "password"}
                             placeholder='Re-enter password'
-                            name='confirmpass'
-                            id='confirmpass'
+                            name='confirm_password'
+                            id='confirm_password'
                             maxLength='6'
-                            value={formData.confirmpass}
+                            value={formData.confirm_password}
                             onChange={handleChange}
                           />
                           <img
@@ -473,7 +478,7 @@ function Mainnavbar({ text }) {
                             className="eye"
                             style={{ cursor: "pointer" }}
                           />
-                          {errors.confirmpass && <div className="error-message">{errors.confirmpass}</div>}
+                          {errors.confirm_password && <div className="error-message">{errors.confirm_password}</div>}
                         </div>
                       </div>
                     </div>
@@ -496,16 +501,32 @@ function Mainnavbar({ text }) {
             <div className="div3-warnin3">
               <div className="div2-warning2">
                 <div className="div-warning1">
-                  <BsCheckCircleFill className='sucsses'/>
+                  <BsCheckCircleFill className='sucsses' />
+                </div>
+              </div>
+            </div>
+            <h2>Success!</h2>
+            <p>Congratulations! Your martial arts hub student account is created and activated successfully. Start exploring our platform, talk with instructors and join your favourite classes!</p>
+            <button className="btn-LogIn" title="Close" onClick={closeSuccessModal}>Okay, Thanks!</button>
+          </Modal.Body>
+        </Modal>
+
+        {/* login succesmodel */}
+        <Modal show={showLoginSuccessModal} onHide={closeLoginSuccessModal} centered className='custom-modal'>
+          <Modal.Header closeButton></Modal.Header>
+          <Modal.Body className='modelboddy'>
+            <div className="div3-warnin3">
+              <div className="div2-warning2">
+                <div className="div-warning1">
+                  <BsCheckCircleFill className='sucsses' />
                 </div>
               </div>
             </div>
             <h2>Success!</h2>
             <p>You have successfully logged in to your martial arts hub student account. Thank you for joining us again. Explore new courses, talk with instructors, and join your favorite classes!</p>
-            <button className="btn-LogIn" title="Close" onClick={closeSuccessModal}>Okay, Thanks!</button>
+            <button className="btn-LogIn" title="Close" onClick={closeLoginSuccessModal}>Okay, Thanks!</button>
           </Modal.Body>
         </Modal>
-
         {/* Warning Modal */}
         <Modal
           show={showLogoutConfirm}
@@ -553,24 +574,3 @@ function Mainnavbar({ text }) {
 };
 
 export default Mainnavbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
