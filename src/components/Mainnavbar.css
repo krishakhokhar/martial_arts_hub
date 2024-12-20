@@ -6,12 +6,13 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: none;
-  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+  position: fixed; 
   height: 94px;
-  display: flex;
-  align-items: center;
+  background-color: rgba(225, 223, 215, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur directly here */
+  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 }
+
 header::before {
   content: "";
   position: absolute;
@@ -19,9 +20,9 @@ header::before {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: initial;
-  backdrop-filter: blur(10px);
-  pointer-events: none;
+  background-color: rgba(225, 223, 215, 0.5); /* Adjust opacity for overlay */
+  backdrop-filter: blur(20px); /* Apply blur effect */
+  pointer-events: none; /* Prevent interaction with the pseudo-element */
   transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 }
 .bg-transparent {
@@ -800,30 +801,12 @@ width: 100px !important;
 .navbar-nav .nav-link.active {
   font-weight: 700;
 }
-.bg-dark-500 {
-  background-color:black;
-  color: #e1dfd7;
-}
-header.bg-dark-500 .navbaratag .nav-link {
-  color: rgba(255, 255, 255, 1); 
-}
-.bg-dark-500 .btn-success {
-  background-color: rgba(255, 255, 255, 1) !important; 
-  color: black !important;
-}
-.bg-dark-500 .dropdown {
-  border: 2px solid rgba(255, 255, 255, 1) !important; 
-}
-.bg-dark-500 .logo{
-  color: rgba(255, 255, 255, 1);
-}
-/* .bg-dark-500 .nav-link.active::after{
-  background-color: white;
-} */
 
-.bg-transparent {
-  background-color: transparent;
-}
 .navbar-expand-lg .navbar-nav .nav-link {
   padding-left: 20px !important;
+}
+
+.blur-background {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
 }

@@ -52,8 +52,6 @@ function App() {
         <Route path="/Negotiation" element={<Negotiation />} />
         <Route path="/Arbrirtion" element={<Arbrirtion />} />
         <Route path="/Studentprofile" element={<Studentprofile />} />
-        
-
         {/* instuctor............................... */}
         <Route path="/Instuctorsignup" element={<Instuctorsignup />} />
         <Route path="/MyProfileform" element={<MyProfile />} />

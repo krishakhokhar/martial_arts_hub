@@ -20,7 +20,8 @@ import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { TiWarning } from 'react-icons/ti';
 import baseUrl from '../baseUrl';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const dropdownitem = [
   { name: "Dashboard", url: "/Dashbord" },
   { name: "My Profile", url: "/Studentprofile" },
@@ -34,8 +35,11 @@ function Mainnavbar({ text }) {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -45,15 +49,18 @@ function Mainnavbar({ text }) {
   const handleShow = () => setShowOffcanvas(true);
   const closeLoginModal = () => setShowLoginModal(false);
 
-  const closeSuccessModal = () => {
-    setShowSuccessModal(false);
-    openLoginModal();
-  };
-  const closeLoginSuccessModal = () => {
-    setShowLoginSuccessModal(false); // Close the modal
-    navigate('/'); // Redirect to home page
-  };
+  useEffect(() => {
+    const mainContent = document.getElementById("main-content");
+    const loginModal = document.getElementById("login-modal");
 
+    if (showSuccessModal || showLoginSuccessModal) {
+      mainContent.classList.add("blur-background");
+      if (loginModal) loginModal.classList.add("blur-background");
+    } else {
+      mainContent.classList.remove("blur-background");
+      if (loginModal) loginModal.classList.remove("blur-background");
+    }
+  });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
@@ -106,44 +113,65 @@ function Mainnavbar({ text }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const postData = async (event) => {
     try {
       event.preventDefault();
+  
       if (validateForm()) {
-        setShowSignUpModal(false);
-        setShowSuccessModal(true);
-        setIsSignedUp(true);
-
-        localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('userName', formData.name);
-
+        setIsSignedUp(true); // Keep the sign-up modal open
+        localStorage.setItem("userEmail", formData.email);
+        localStorage.setItem("userName", formData.name);
+  
         setUserEmail(formData.email);
         setUserName(formData.name);
-
+  
+        // API request
         const response = await axios.post(`${baseUrl}/student/signup`, {
-
           name: formData.name,
           email: formData.email,
           password: formData.password,
           confrim_password: formData.confirm_password,
         });
-
-        console.log(response, "==============>response");
-
-        if (response) {
-          setFormData({ name: '', email: '', password: '', confirm_password: '' });
+  
+        if (response.status === 201) {
+          // Signup success
+          setFormData({ name: "", email: "", password: "", confirm_password: "" });
           setErrors({});
+          setShowSuccessModal(true); // Show success modal
+          toast.success("Signup successful!"); // Success message
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error details:", error);  // Log the full error object
+  
+      // Check if it's an axios error with a response
+      if (error.response) {
+        if (error.response.status === 400) {
+          setErrors({ email: "Email already in use. Please try another email." });
+          toast.error("Email already in use.");
+        } else {
+          // Handle other status codes and show error messages
+          toast.error(`Error: ${error.response.data.message || 'Something went wrong!'}`);
+        }
+      } else if (error.request) {
+        // No response received from the server
+        console.error("No response received:", error.request);
+        toast.error("Server not responding. Please try again later.");
+      } else {
+        // General unexpected error
+        console.error("Unexpected error:", error.message);
+        toast.error("An unexpected error occurred. Please try again.");
+      }
     }
   };
+  
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  // Close success modal and open login modal
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    openLoginModal(); // Open login modal when success modal is closed
+  };
+  
   const validateForm1 = () => {
     const newErrors = {};
     if (!email) newErrors.email = 'Email is required';
@@ -153,29 +181,13 @@ function Mainnavbar({ text }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  useEffect(() => {
+    const savedIsSignedUp = localStorage.getItem('isSignedUp') === 'true'; 
+    const savedUserName = localStorage.getItem('userName') || ''; 
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    if (validateForm1()) {
-      try {
-        const response = await axios.post(`${baseUrl}/student/login`, {
-          email: email,
-          password: password
-        });
-        if (response.status === 200) {
-          closeLoginModal(); 
-          setShowLoginSuccessModal(true);
-          setUserEmail(email);
-        }
-      } catch (error) {
-        if (error.response) {
-          setErrors({ login: error.response.data.message || "Login failed. Please try again." });
-        } else {
-          setErrors({ login: "An unexpected error occurred." });
-        }
-      }
-    }
-  };
+    setIsSignedUp(savedIsSignedUp); // Sync state
+    setUserName(savedUserName);
+  }, []);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
@@ -185,9 +197,50 @@ function Mainnavbar({ text }) {
     }
   }, []);
 
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (validateForm1()) {
+        try {
+            const response = await axios.post(`${baseUrl}/student/login`, {
+                email: email,
+                password: password
+            });
+            if (response.status === 200) {
+              setShowLoginSuccessModal(true); // Show success modal
+              const userData = response.data.data; // Assuming the user data is in response.data.data
+              setUserEmail(userData.email);
+              setUserName(userData.name); // Set user's name from response
+              localStorage.setItem("userEmail", userData.email); // Store email in local storage
+              localStorage.setItem("userName", userData.name); // Store name in local storage
+              setIsSignedUp(true); //
+            }
+        } catch (error) {
+            if (error.response) {
+                // Handle error messages
+                if (error.response.data.message) {
+                    toast.error(error.response.data.message);
+                } else {
+                    toast.error("Login failed. Please try again.");
+                }
+            } else {
+                toast.error("An unexpected error occurred.");
+            }
+        }
+    }
+};
+ 
+  // Close both modals
+  const closeBothModals = () => {
+    setShowLoginModal(false);
+    setShowLoginSuccessModal(false);
+  };
+
+ 
   const handleLogout = () => {
     setShowLogoutConfirm(true);
+    setIsSignedUp(false);
+    localStorage.removeItem('isSignedUp'); // Remove from localStorage
+    localStorage.removeItem('userName');
     navigate("/");
   };
 
@@ -203,10 +256,9 @@ function Mainnavbar({ text }) {
       handleClose();
     }
   };
-  const isProfilePage = location.pathname === "/Studentprofile";
   return (
     <div id="main-content">
-      <header className={`top-0 left-0 z-[9] fixed-top ${isProfilePage ? "bg-dark-500" : "bg-transparent"}`}>
+      <header className={`top-0 left-0 z-[9] fixed-top`}>
         <div className="container">
           <Navbar expand="lg" className="mx-auto flex items-center justify-between p-6 lg:px-8">
             <Navbar.Brand href="#home" className="flex flex-1">
@@ -227,7 +279,7 @@ function Mainnavbar({ text }) {
                   </>
                 )}
                 {isSignedUp && (
-                  <Dropdown align="end" className={`dropdown ${isProfilePage ? 'white-border' : ''}`}>
+                  <Dropdown align="end" className='dropdown'>
                     <Dropdown.Toggle variant="success" id="dropdown-basic" className="profile-button">
                       {userEmail[0].toUpperCase()}
                     </Dropdown.Toggle>
@@ -370,7 +422,6 @@ function Mainnavbar({ text }) {
                             name='pass1'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            maxLength='6'
                           />
                           <img
                             src={isPasswordVisible ? eye : eyeslash}
@@ -397,7 +448,7 @@ function Mainnavbar({ text }) {
         </Modal>
 
         {/* Sign Up Modal */}
-        <Modal show={showSignUpModal} onHide={openSignUpModal} centered>
+        <Modal show={showSignUpModal} onHide={openSignUpModal} centered className='moaadel' id="login-modal">
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body>
             <div className='main-padding'>
@@ -445,7 +496,6 @@ function Mainnavbar({ text }) {
                             placeholder='Create password'
                             name='password'
                             id='pass'
-                            maxLength='6'
                             value={formData.password}
                             onChange={handleChange}
                           />
@@ -467,7 +517,6 @@ function Mainnavbar({ text }) {
                             placeholder='Re-enter password'
                             name='confirm_password'
                             id='confirm_password'
-                            maxLength='6'
                             value={formData.confirm_password}
                             onChange={handleChange}
                           />
@@ -511,8 +560,7 @@ function Mainnavbar({ text }) {
           </Modal.Body>
         </Modal>
 
-        {/* login succesmodel */}
-        <Modal show={showLoginSuccessModal} onHide={closeLoginSuccessModal} centered className='custom-modal'>
+        <Modal show={showLoginSuccessModal} onHide={closeBothModals} centered className='custom-modal'>
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body className='modelboddy'>
             <div className="div3-warnin3">
@@ -524,10 +572,9 @@ function Mainnavbar({ text }) {
             </div>
             <h2>Success!</h2>
             <p>You have successfully logged in to your martial arts hub student account. Thank you for joining us again. Explore new courses, talk with instructors, and join your favorite classes!</p>
-            <button className="btn-LogIn" title="Close" onClick={closeLoginSuccessModal}>Okay, Thanks!</button>
+            <button className="btn-LogIn" title="Close" onClick={closeBothModals}>Okay, Thanks!</button>
           </Modal.Body>
         </Modal>
-        {/* Warning Modal */}
         <Modal
           show={showLogoutConfirm}
           onHide={() => setShowLogoutConfirm(false)}
@@ -568,6 +615,19 @@ function Mainnavbar({ text }) {
             </div>
           </Modal.Body>
         </Modal>
+        {/* Toast Container for notifications */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          progressClassName="toast-progress"
+        />
       </header>
     </div>
   );
