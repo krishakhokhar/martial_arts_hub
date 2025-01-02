@@ -28,16 +28,30 @@ function BookClassform() {
     };
 
     return (
-        <div style={{ height: '100vh', overflow: 'hidden' }}>
+        <div className="container-fluid">
             <div className='row'>
-                <div className='col-md-4'>
+                <div className='col-12 col-md-4'>
                     <IoMdArrowBack onClick={handleStageClick} className='bookclassback' />
                 </div>
-                <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 20px)' }}>
-                    <h1>Book Class Form</h1>
-                    <p>Instructor Name: {instructor.name}</p>
-                    <img src={instructor.photo} alt="Instructor" style={{ width: '150px', height: '150px' }} />
-                    {/* Add your form fields here */}
+                <div className='col-12'>
+                    <div className="book-class-content" style={{ 
+                        overflowY: 'auto', 
+                        maxHeight: '100vh',
+                        padding: '20px'
+                    }}>
+                        <h1>Book Class Form</h1>
+                        <p>Instructor Name: {instructor.name}</p>
+                        <img 
+                            src={instructor.photo} 
+                            alt="Instructor" 
+                            className="img-fluid"
+                            style={{ 
+                                maxWidth: '150px',
+                                height: 'auto'
+                            }} 
+                        />
+                        {/* Add your form fields here */}
+                    </div>
                 </div>
             </div>
         </div>

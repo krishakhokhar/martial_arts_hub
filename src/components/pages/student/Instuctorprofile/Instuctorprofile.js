@@ -249,7 +249,7 @@ function Instuctorprofile() {
                     </button>
                 </div>
             </div>
-            <div className="slider-container">
+            <div className="slider-container" style={{ width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
                 <Slider
                     ref={slider => {
                         sliderRef = slider;
