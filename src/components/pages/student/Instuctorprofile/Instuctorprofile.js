@@ -114,7 +114,7 @@ function Instuctorprofile() {
     }
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid" style={{overflow:'hidden'}}>
             <div className="myprofilpage2 row">
                 <div className="col-md-9 manicol">
                     <div>

@@ -28,12 +28,12 @@ function BookClassform() {
     };
 
     return (
-        <div>
+        <div style={{ height: '100vh', overflow: 'hidden' }}>
             <div className='row'>
                 <div className='col-md-4'>
                     <IoMdArrowBack onClick={handleStageClick} className='bookclassback' />
                 </div>
-                <div>
+                <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 20px)' }}>
                     <h1>Book Class Form</h1>
                     <p>Instructor Name: {instructor.name}</p>
                     <img src={instructor.photo} alt="Instructor" style={{ width: '150px', height: '150px' }} />
