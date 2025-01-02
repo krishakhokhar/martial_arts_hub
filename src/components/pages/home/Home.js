@@ -18,6 +18,7 @@ import Footer from '../../comman/Footer';
 import Getintouch from '../../comman/Getintouch';
 
 function Home() {
+
     return (
         <div>
             {/* //............................ hero-section...................................// */}
@@ -76,7 +77,7 @@ function Home() {
                             <p>Can't find your martial art discipline in our list? Don't worry! Simply notify us, and we'll make every effort to add it to our offerings.</p>
                         </div>
                         <div className='noyify-input'>
-                            <input type='text' placeholder="Enter Discipline’s name" />
+                            <input type='text' placeholder="Enter Discipline's name" />
                             <textarea placeholder='Description'></textarea>
                             <div className='divtion'>
                                 <Button text={'Notify Us'} className='notify-btn' />
@@ -87,7 +88,7 @@ function Home() {
             </section>
             {/*..................................... discipline..end................................... */}
             { /*........................................................ martial arts hub................. */}
-            <section className='py-20 px-3 lg:px-8v martial'z >
+            <section className='py-20 px-3 lg:px-8v martial' z >
                 <h2 className='title'>martial arts hub.</h2>
                 <div className='-mt-7 who-are'>
                     <h2>Who we are</h2>
@@ -100,7 +101,7 @@ function Home() {
             {/* ..............................................Ready to Learn?......................................... */}
             <section className='bg-black px-3 lg:px-8 redytolern'>
                 <h2>Ready to Learn?</h2>
-                <p className='text-xl text-center text-white/50 mt-5'>Ready to learn martial arts but need some direction? Don’t worry, we've got you covered.</p>
+                <p className='text-xl text-center text-white/50 mt-5'>Ready to learn martial arts but need some direction? Don't worry, we've got you covered.</p>
                 <p className='text-xl text-center text-white/50 mt-4 max-w-screen-lg mx-auto'>Join Us online classes and learn from world-class martial arts instructors. Train at your own pace and master the art of self-defense or message our instructors for personalized guidance.</p>
                 <div className='btns-ls2'>
                     <Button className='Start-Today1' text={'Start Today'} icone={<FaArrowUpLong className='arrow' />}></Button>
@@ -298,14 +299,12 @@ function Home() {
             {/* Frequently ....end............................................ */}
 
             {/* Get in touch with us anytime!................................ */}
-<Getintouch/>
+            <Getintouch />
             {/* Get in touch with us anytime-end!................................ */}
             {/* Footer.................................................. */}
-            <Footer/>
-            
+            <Footer />
+
             {/* Footer....end.............................................. */}
-
-
 
         </div>
     );
