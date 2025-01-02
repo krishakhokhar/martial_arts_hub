@@ -10,11 +10,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { GoShareAndroid } from 'react-icons/go';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaArrowUpLong, FaQuoteLeft, FaStar } from 'react-icons/fa6';
-// import img24 from '../../../../image/home/24.png'
+import img24 from '../../../../image/home/24.png'
 import Secondslide from '../../../comman/Secondslide'
 import Getintouch from '../../../comman/Getintouch'
 import Footer from '../../../comman/Footer'
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 
 function Instuctorprofile() {
