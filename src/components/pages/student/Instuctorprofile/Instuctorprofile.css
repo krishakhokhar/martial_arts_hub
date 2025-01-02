@@ -112,7 +112,7 @@ h3 {
   border: 1px solid #8484844d;
   padding: 15px 50px 15px 50px;
   border-radius: 15px;
-  width: 90% !important;
+  width: 95% !important;
   /* margin-bottom: 50px; */
 }
 .slideprofile p {
@@ -142,5 +142,8 @@ h3 {
   }
   .Sarah {
     display: block;
+  }
+  .slideprofile{
+    width: 100% !important;
   }
 }
