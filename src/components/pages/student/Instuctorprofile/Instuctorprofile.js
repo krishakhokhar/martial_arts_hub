@@ -249,7 +249,7 @@ function Instuctorprofile() {
                     </button>
                 </div>
             </div>
-            {/* <div className="slider-container">
+            <div className="slider-container">
                 <Slider
                     ref={slider => {
                         sliderRef = slider;
@@ -323,7 +323,7 @@ function Instuctorprofile() {
                         </div>
                     </div>
                 </Slider>
-            </div> */}
+            </div>
             <section className='md:py-space pb-20 lg:px-8 our '>
                 <Secondslide />
             </section>
