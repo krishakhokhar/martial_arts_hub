@@ -90,7 +90,6 @@ function Becomeinlogin() {
                       name='pass1'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      maxLength='6'
                     />
                     <img
                       src={isPasswordVisible ? eye : eyeslash}

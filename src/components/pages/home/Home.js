@@ -1,21 +1,21 @@
 import React from 'react';
 import './Home.css';
-import Button from '../../../comman/Button';
-import img1 from '../../../../image/home/1.png';
-import img2 from '../../../../image/home/2.png';
-import img3 from '../../../../image/home/3.png';
-import img4 from '../../../../image/home/4.png';
-import img5 from '../../../../image/home/5.png';
-import Slider1 from '../../../comman/Slider';
+import Button from '../../comman/Button';
+import img1 from '../../../image/home/1.png';
+import img2 from '../../../image/home/2.png';
+import img3 from '../../../image/home/3.png';
+import img4 from '../../../image/home/4.png';
+import img5 from '../../../image/home/5.png';
+import Slider1 from '../../comman/Slider';
 import { FaArrowUpLong } from "react-icons/fa6";
-import Secondslide from '../../../comman/Secondslide';
-import circalimg from '../../../../image/home/14.png';
-import circalimg1 from '../../../../image/home/15.png';
-import circalimg2 from '../../../../image/home/16.png';
-import circalimg3 from '../../../../image/home/17.png';
+import Secondslide from '../../comman/Secondslide';
+import circalimg from '../../../image/home/14.png';
+import circalimg1 from '../../../image/home/15.png';
+import circalimg2 from '../../../image/home/16.png';
+import circalimg3 from '../../../image/home/17.png';
 import Accordion from 'react-bootstrap/Accordion';
-import Footer from '../../../comman/Footer';
-import Getintouch from '../../../comman/Getintouch';
+import Footer from '../../comman/Footer';
+import Getintouch from '../../comman/Getintouch';
 
 function Home() {
     return (
@@ -87,7 +87,7 @@ function Home() {
             </section>
             {/*..................................... discipline..end................................... */}
             { /*........................................................ martial arts hub................. */}
-            <section className='py-20 px-3 lg:px-8v martial' >
+            <section className='py-20 px-3 lg:px-8v martial'z >
                 <h2 className='title'>martial arts hub.</h2>
                 <div className='-mt-7 who-are'>
                     <h2>Who we are</h2>
@@ -200,7 +200,6 @@ function Home() {
             {/* ............................................Why Join Us.....end............................................. */}
             {/*................................... Our Instructors............................... */}
             <section className='md:py-space pb-20 lg:px-8 our '>
-                <h2>Our Instructors</h2>
                 <Secondslide />
             </section>
             {/*................................... Our Instructors-end.............................. */}

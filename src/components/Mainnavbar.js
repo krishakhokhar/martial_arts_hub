@@ -15,7 +15,7 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import eye from '../image/home/eye.png';
 import eyeslash from '../image/home/eyeslash.png';
 import axios from "axios";
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { BsCheck } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { TiWarning } from 'react-icons/ti';
@@ -53,7 +53,7 @@ function Mainnavbar({ text }) {
     const mainContent = document.getElementById("main-content");
     const loginModal = document.getElementById("login-modal");
 
-    if (showSuccessModal || showLoginSuccessModal) {
+    if (showSuccessModal || showLoginSuccessModal||showLogoutConfirm) {
       mainContent.classList.add("blur-background");
       if (loginModal) loginModal.classList.add("blur-background");
     } else {
@@ -116,15 +116,15 @@ function Mainnavbar({ text }) {
   const postData = async (event) => {
     try {
       event.preventDefault();
-  
+
       if (validateForm()) {
         setIsSignedUp(true); // Keep the sign-up modal open
         localStorage.setItem("userEmail", formData.email);
         localStorage.setItem("userName", formData.name);
-  
+
         setUserEmail(formData.email);
         setUserName(formData.name);
-  
+
         // API request
         const response = await axios.post(`${baseUrl}/student/signup`, {
           name: formData.name,
@@ -132,7 +132,7 @@ function Mainnavbar({ text }) {
           password: formData.password,
           confrim_password: formData.confirm_password,
         });
-  
+
         if (response.status === 201) {
           // Signup success
           setFormData({ name: "", email: "", password: "", confirm_password: "" });
@@ -143,7 +143,7 @@ function Mainnavbar({ text }) {
       }
     } catch (error) {
       console.error("Error details:", error);  // Log the full error object
-  
+
       // Check if it's an axios error with a response
       if (error.response) {
         if (error.response.status === 400) {
@@ -164,14 +164,14 @@ function Mainnavbar({ text }) {
       }
     }
   };
-  
+
 
   // Close success modal and open login modal
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
     openLoginModal(); // Open login modal when success modal is closed
   };
-  
+
   const validateForm1 = () => {
     const newErrors = {};
     if (!email) newErrors.email = 'Email is required';
@@ -182,8 +182,8 @@ function Mainnavbar({ text }) {
     return Object.keys(newErrors).length === 0;
   };
   useEffect(() => {
-    const savedIsSignedUp = localStorage.getItem('isSignedUp') === 'true'; 
-    const savedUserName = localStorage.getItem('userName') || ''; 
+    const savedIsSignedUp = localStorage.getItem('isSignedUp') === 'true';
+    const savedUserName = localStorage.getItem('userName') || '';
 
     setIsSignedUp(savedIsSignedUp); // Sync state
     setUserName(savedUserName);
@@ -200,49 +200,55 @@ function Mainnavbar({ text }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (validateForm1()) {
-        try {
-            const response = await axios.post(`${baseUrl}/student/login`, {
-                email: email,
-                password: password
-            });
-            if (response.status === 200) {
-              setShowLoginSuccessModal(true); // Show success modal
-              const userData = response.data.data; // Assuming the user data is in response.data.data
-              setUserEmail(userData.email);
-              setUserName(userData.name); // Set user's name from response
-              localStorage.setItem("userEmail", userData.email); // Store email in local storage
-              localStorage.setItem("userName", userData.name); // Store name in local storage
-              setIsSignedUp(true); //
-            }
-        } catch (error) {
-            if (error.response) {
-                // Handle error messages
-                if (error.response.data.message) {
-                    toast.error(error.response.data.message);
-                } else {
-                    toast.error("Login failed. Please try again.");
-                }
-            } else {
-                toast.error("An unexpected error occurred.");
-            }
+      try {
+        const response = await axios.post(`${baseUrl}/student/login`, {
+          email: email,
+          password: password
+        });
+        if (response.status === 200) {
+          setShowLoginSuccessModal(true); // Show success modal
+          const userData = response.data.data; // Assuming the user data is in response.data.data
+          setUserEmail(userData.email);
+          setUserName(userData.name); // Set user's name from response
+          localStorage.setItem("userEmail", userData.email); // Store email in local storage
+          localStorage.setItem("userName", userData.name); // Store name in local storage
+          setIsSignedUp(true); 
         }
+      } catch (error) {
+        if (error.response) {
+          // Handle error messages
+          if (error.response.data.message) {
+            toast.error(error.response.data.message);
+          } else {
+            toast.error("Login failed. Please try again.");
+          }
+        } else {
+          toast.error("An unexpected error occurred.");
+        }
+      }
     }
-};
- 
+  };
+
   // Close both modals
   const closeBothModals = () => {
     setShowLoginModal(false);
     setShowLoginSuccessModal(false);
   };
 
- 
-  const handleLogout = () => {
-    setShowLogoutConfirm(true);
+
+  const confirmLogout = () => {
     setIsSignedUp(false);
-    localStorage.removeItem('isSignedUp'); // Remove from localStorage
-    localStorage.removeItem('userName');
-    navigate("/");
+    localStorage.removeItem("isSignedUp"); // Remove user data
+    localStorage.removeItem("userName");
+    setShowLogoutConfirm(false); // Close the modal
+    navigate("/"); // Redirect to home or login page
   };
+
+// Open modal for logout
+const handleLogout = () => {
+  setShowLogoutConfirm(true); 
+};
+
 
   const Navigat = useNavigate("");
   const handleclick = () => {
@@ -469,7 +475,7 @@ function Mainnavbar({ text }) {
                 </div>
 
                 <div className='formlogin2'>
-                  <FaArrowLeft className='iconearrow' />
+                  <FaArrowLeft className='iconearrow' onClick={openLoginModal} />
                   <h2>Create an Account!</h2>
                   <p>Please fill below details to join <span>martial arts hub</span> as a student!</p>
                   <form name='form2' id='form' onSubmit={postData}>
@@ -550,7 +556,7 @@ function Mainnavbar({ text }) {
             <div className="div3-warnin3">
               <div className="div2-warning2">
                 <div className="div-warning1">
-                  <BsCheckCircleFill className='sucsses' />
+                  <BsCheck className='sucsses' />
                 </div>
               </div>
             </div>
@@ -560,13 +566,15 @@ function Mainnavbar({ text }) {
           </Modal.Body>
         </Modal>
 
+        {/* LoginSuccessModal */}
+
         <Modal show={showLoginSuccessModal} onHide={closeBothModals} centered className='custom-modal'>
           <Modal.Header closeButton></Modal.Header>
           <Modal.Body className='modelboddy'>
             <div className="div3-warnin3">
               <div className="div2-warning2">
                 <div className="div-warning1">
-                  <BsCheckCircleFill className='sucsses' />
+                  <BsCheck className='sucsses' />
                 </div>
               </div>
             </div>
@@ -575,6 +583,7 @@ function Mainnavbar({ text }) {
             <button className="btn-LogIn" title="Close" onClick={closeBothModals}>Okay, Thanks!</button>
           </Modal.Body>
         </Modal>
+        {/* conflogoutmodel */}
         <Modal
           show={showLogoutConfirm}
           onHide={() => setShowLogoutConfirm(false)}
@@ -594,20 +603,18 @@ function Mainnavbar({ text }) {
               Are you sure you want to log out from your <b>martial arts hub</b> account?
             </p>
             <div className="mt-4 bttons">
+              {/* Logout Confirmation */}
               <button
                 type="button"
-                onClick={() => {
-                  setIsSignedUp(false);
-                  localStorage.removeItem("userEmail");
-                  setShowLogoutConfirm(false); // Close modal after logout
-                }}
+                onClick={confirmLogout} // Call confirmLogout on click
                 className="logout"
               >
                 Logout
               </button>
+              {/* Close Modal */}
               <button
                 type="button"
-                onClick={() => setShowLogoutConfirm(false)} // Close modal without action
+                onClick={() => setShowLogoutConfirm(false)} // Close modal without logging out
                 className="goback"
               >
                 Go Back
@@ -615,6 +622,7 @@ function Mainnavbar({ text }) {
             </div>
           </Modal.Body>
         </Modal>
+
         {/* Toast Container for notifications */}
         <ToastContainer
           position="top-right"

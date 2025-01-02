@@ -128,8 +128,8 @@ const InstructorProfile = () => {
               <p className='hourclass'>“This hour of martial arts training is a powerful gift to your body and mind, fostering inner strength and outer resilience. It’s not just about learning techniques; it’s about cultivating discipline, confidence, and a sense of empowerment. Beyond punches and kicks, it’s about achieving overall well-being. Martial arts improve coordination and mental clarity, bringing vitality and balance to both your body and mind.”</p>
             </div>
 
+            <h3>Experience</h3>
             <div className='expiryonce'>
-              <h3>Experience</h3>
               <ul>
                 {experiencePoints.map((point, index) => (
                   <li key={index} className="experience-item">
@@ -140,8 +140,8 @@ const InstructorProfile = () => {
               </ul>
             </div>
 
+            <h3>Certifications</h3>
             <div className="expiryonce">
-              <h3>Certifications</h3>
               <div className="certification">
                 {certifications.map((group, groupIndex) => (
                   <div key={groupIndex} className={groupIndex === 1 ? 'seconsirification ' : ''}>
@@ -155,8 +155,8 @@ const InstructorProfile = () => {
               </div>
             </div>
 
+            <h3>Hourly Rates</h3>
             <div>
-              <h3>Hourly Rates</h3>
               <div className="rates">
                 {rates.map((group, groupIndex) => (
                   <div key={groupIndex} className={groupIndex === 1 ? 'seconsirification' : ''}>
@@ -172,7 +172,7 @@ const InstructorProfile = () => {
                 ))}
               </div>
             </div>
-            <div className="expiryonce">
+            <div >
               <h3>Training History</h3>
               {history.map((item, index) => (
                 <p key={index}>

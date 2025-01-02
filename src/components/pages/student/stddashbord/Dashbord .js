@@ -10,6 +10,7 @@ import reqvestimg2 from '../../../../image/home/11.png';
 import paymentimg1 from '../../../../image/home/6.png';
 import paymentimg2 from '../../../../image/home/9.png';
 import { FaArrowUp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function Dashbord() {
   const [userName, setUserName] = useState('');
@@ -90,6 +91,10 @@ function Dashbord() {
       class:"Details"
     }
   ]
+  const navigat = useNavigate()
+  const studentprofile = () => {
+    navigat('/Studentprofile')
+  }
 
   return (
     <div>
@@ -121,7 +126,7 @@ function Dashbord() {
                       <p><span>Role:</span> {profile.Joinedas}</p>
                       <p><span>Joined On:</span> {profile.Joinedon}</p>
                       <p className='profilec'><span>Profile Completion:</span> {profile.ProfileCompletion}</p>
-                      <p className='complete'>{profile.Complete}</p>
+                      <p className='complete' onClick={studentprofile}>{profile.Complete}</p>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,67 @@
+.btn-edit2 {
+  width: 100px;
+  margin-right: 1%;
+}
+.btn-share2 {
+  width: 100px;
+}
+.student-name h2 {
+  font-size: 50px;
+  font-weight: 700;
+}
+.student-flexitems {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.studentper-outer {
+  width: 170px;
+  height: 30px;
+  margin-top: -2%;
+  margin-left: 30px;
+  background-color: rgba(199, 198, 191, 1);
+  border-radius: 30px;
+}
+.studentper-inner {
+  width: 130px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 35px;
+  background-color: rgba(52, 177, 117, 1);
+}
+.complet-profile span {
+  color: #cb3530;
+  text-decoration: underline;
+}
+.complet-profile p {
+  color: #0f0f0fb2;
+  padding-left: 30px;
+}
+@media (max-width: 1160px) {
+  .student-name h2 {
+    font-size: 30;
+    font-weight: 700;
+  }
+}
+@media (max-width: 600px) {
+  .student-flexitems {
+    display: block;
+  }
+  .studentper-outer {
+    width: 90%;
+  }
+  .studentper-inner {
+    width: 80%;
+  }
+  .btn-edit2{
+    width: 100%;
+  }
+  .btn-share2{
+    width: 100%;
+  }
+}

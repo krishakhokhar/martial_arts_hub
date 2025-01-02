@@ -1,0 +1,23 @@
+.hertfav {
+  margin: 0 auto;
+  display: block;
+}
+.srchins {
+  width: 29%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 5%;
+  background-color: black;
+  height: 55px;
+}
+.favrite {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.favrite p {
+  font-size: 17px;
+  color: #6b6b6b;
+  max-width: 505px;
+  margin: 0 auto;
+}

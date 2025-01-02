@@ -9,7 +9,7 @@ import eyeslash from '../../../../image/home/eyeslash.png';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../../comman/Footer'
 import Modal from 'react-bootstrap/Modal';
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { BsCheck } from 'react-icons/bs';
 
 
 
@@ -117,7 +117,6 @@ function Instuctorsignup() {
                                             placeholder='Create password'
                                             name='password'
                                             id='pass'
-                                            maxLength='6'
                                             value={formData.password}
                                             onChange={handleChange}
                                         />
@@ -139,7 +138,6 @@ function Instuctorsignup() {
                                             placeholder='Re-enter password'
                                             name='confirmpass'
                                             id='confirmpass'
-                                            maxLength='6'
                                             value={formData.confirmpass}
                                             onChange={handleChange}
                                         />
@@ -186,15 +184,15 @@ function Instuctorsignup() {
             <Modal show={showSuccessModal} onHide={closeSuccessModal} centered className='custom-modal'>
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body className='modelboddy'>
-                    <div className="div3-warning3">
+                    <div className="div3-warnin3">
                         <div className="div2-warning2">
                             <div className="div-warning1">
-                                <BsCheckCircleFill className='sucsses' />
+                                <BsCheck className='sucsses' />
                             </div>
                         </div>
                     </div>
                     <h2>Success!</h2>
-                    <p>You have successfully logged in to your martial arts hub student account. Thank you for joining us again. Explore new courses, talk with instructors, and join your favorite classes!</p>
+                    <p>Congratulations! Your martial arts hub student account is created and activated successfully. Start exploring our platform, talk with instructors and join your favourite classes!</p>
                     <button className="btn-LogIn" title="Close" onClick={closeSuccessModal}>Okay, Thanks!</button>
                 </Modal.Body>
             </Modal>

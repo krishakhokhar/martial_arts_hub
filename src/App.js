@@ -1,6 +1,6 @@
 import './App.css';
 import Mainnavbar from './components/Mainnavbar';
-import Home from './components/pages/student/home/Home';
+import Home from './components/pages/home/Home';
 import AboutUs from './components/pages/about/AboutUs';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './components/pages/student/stddashbord/Dashbord '
@@ -19,7 +19,16 @@ import Closedesputes from './components/pages/student/raisedispute/Closedesputes
 import DisputeStages from './components/pages/student/raisedispute/DisputeStages'
 import Negotiation from './components/pages/student/raisedispute/Negotiation';
 import Arbrirtion from './components/pages/student/raisedispute/Arbrirtion';
-import Studentprofile from './components/pages/student/studentprofile/Studentprofile';
+import Studentprofile from './components/pages/student/studentprofile/studentmyprofile/Studentprofile';
+import Studentcolfirstcommun from './components/pages/student/studentprofile/studentcolfirstcommun';
+import Studentcolsecond from './components/pages/student/studentprofile/Studentcolsecond';
+import Logindetails from './components/pages/student/studentprofile/Logindetails/Logindetails';
+import Forgetpassword from './components/pages/student/studentprofile/Forgetpass/Forgetpassword';
+import ResetPassword from './components/pages/student/studentprofile/ResetPassword/ResetPassword';
+import FavoriteInstructors from './components/pages/student/studentprofile/FavoriteInstructors/FavoriteInstructors';
+import BookingHistory from './components/pages/student/studentprofile/BookingHistory/BookingHistory';
+import Instuctorprofile from './components/pages/student/Instuctorprofile/Instuctorprofile';
+import BookClassform from './components/pages/student/Instuctorprofile/BookClassform/BookClassform';
 
 
 
@@ -35,7 +44,7 @@ function App() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && <Mainnavbar text={navItems} />}
+      {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && location.pathname!=="/BookClassform" && <Mainnavbar text={navItems} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -52,6 +61,15 @@ function App() {
         <Route path="/Negotiation" element={<Negotiation />} />
         <Route path="/Arbrirtion" element={<Arbrirtion />} />
         <Route path="/Studentprofile" element={<Studentprofile />} />
+        <Route path="/Studentcolfirstcommun" element={<Studentcolfirstcommun />} />
+        <Route path="/Studentcolsecond" element={<Studentcolsecond />} />
+        <Route path="/Logindetails" element={<Logindetails />} />
+        <Route path="/Forgetpassword" element={<Forgetpassword />} />
+        <Route path="/ResetPassword" element={<ResetPassword />} />
+        <Route path="/FavoriteInstructors" element={<FavoriteInstructors />} />
+        <Route path="/BookingHistory" element={<BookingHistory />} />
+        <Route path="/Instuctorprofile" element={<Instuctorprofile />} />
+        <Route path="/BookClassform" element={<BookClassform />} />
         {/* instuctor............................... */}
         <Route path="/Instuctorsignup" element={<Instuctorsignup />} />
         <Route path="/MyProfileform" element={<MyProfile />} />

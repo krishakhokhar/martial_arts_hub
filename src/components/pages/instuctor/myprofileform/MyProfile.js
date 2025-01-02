@@ -13,7 +13,7 @@ function MyProfile() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
-        email: '', // This will be populated from local storage
+        email: '', 
         mobile: '',
         availability: '',
         bio: '',

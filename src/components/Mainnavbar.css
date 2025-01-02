@@ -6,10 +6,11 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  position: fixed; 
+  position: fixed;
   height: 94px;
-  background-color: rgba(225, 223, 215, 0.8); /* Semi-transparent background */
-  backdrop-filter: blur(10px); /* Apply blur directly here */
+  background-color: rgba(225, 223, 215, 0.5); /* Semi-transparent base */
+  backdrop-filter: blur(10px); /* Subtle blur effect on the main header */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
   transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 }
 
@@ -20,9 +21,10 @@ header::before {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(225, 223, 215, 0.5); /* Adjust opacity for overlay */
-  backdrop-filter: blur(20px); /* Apply blur effect */
-  pointer-events: none; /* Prevent interaction with the pseudo-element */
+  background-color: rgba(225, 223, 215, 0.3);
+  backdrop-filter: blur(-10px);
+  -webkit-backdrop-filter: blur(20px);
+  pointer-events: none;
   transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 }
 .bg-transparent {
@@ -534,10 +536,11 @@ width: 100px !important;
   max-width: 500px;
   background: #e1dfd7;
   border: none !important ;
+  border-radius: 20px !important;
 }
 .modelboddy h2 {
   text-align: center;
-  padding-top: 10px;
+  /* padding-top: 50px; */
   padding-bottom: 10px;
   font-weight: 600;
   font-size: 36px;
@@ -681,26 +684,26 @@ width: 100px !important;
 }
 /* succsemodel........................ */
 .sucsses {
-  font-size: 40px;
-  /* background-color:green; */
+  font-size: 75px;
+  background-color: #25c277;
   color: white;
   border-radius: 50%;
-  margin-top: 18px;
+  margin-top: 13px;
 }
 .div-warning1 {
-  width: 78px;
-  height: 78px;
-  margin: 0 auto;
-  background-color: rgba(37, 194, 119, 1);
-  border-radius: 50%;
-}
-.div2-warning2 {
   width: 100px;
   height: 100px;
   margin: 0 auto;
-  background-color: rgb(124, 212, 170);
+  background-color: rgb(140 223 183);
   border-radius: 50%;
-  padding-top: 11px;
+}
+.div2-warning2 {
+  width: 130px;
+  height: 130px;
+  margin: 35px auto;
+  background-color: rgb(196 223 210);
+  border-radius: 50%;
+  padding-top: 16px;
 }
 .div3-warning3 {
   width: 120px;
@@ -717,18 +720,14 @@ width: 100px !important;
   background-color: #e1dfd7;
 }
 
-.custom-modal1 .modal-dialog {
-  width: 50%;
-  max-width: none;
-  margin: auto;
-}
 .custom-modal1 .modal-content {
   margin: auto;
-  max-width: 400px;
-  height: 350px;
+  max-width: 445px;
+  height: 400px;
   background: transparent !important;
   border: none !important;
 }
+
 .warning {
   font-size: 36px;
   background-color: rgb(203, 113, 48);
@@ -769,14 +768,18 @@ width: 100px !important;
 }
 .bttons {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin: 0 auto;
+  justify-content: center;
+  /* margin-top: 70px !important; */
 }
 .areyou p {
+  text-align: center;
   margin-top: 0;
-  max-width: 402px;
-  margin-bottom: 1rem;
-  padding: 0px 50px 0px 50px;
+  max-width: 445px;
+  font-size: 18px;
+  margin-bottom: 2rem;
+  padding: 19px 50px 0px 50px;
 }
 .areyou {
   padding-top: 32px;

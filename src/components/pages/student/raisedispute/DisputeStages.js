@@ -3,7 +3,7 @@ import './DisputeStages.css';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
 import { IoIosCloudUpload } from 'react-icons/io';
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { BsCheck } from 'react-icons/bs';
 import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -184,7 +184,7 @@ function DisputeStages() {
           <div className="div3-warning3">
             <div className="div2-warning2">
               <div className="div-warning1">
-               <BsCheckCircleFill className='sucsses' />
+               <BsCheck className='sucsses' />
               </div>
             </div>
           </div>

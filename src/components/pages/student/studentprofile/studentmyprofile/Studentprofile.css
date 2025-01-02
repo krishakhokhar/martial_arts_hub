@@ -1,0 +1,269 @@
+.student_profile {
+  background-color: black;
+  text-align: right;
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 40px;
+}
+.student_profile h3 {
+  color: white;
+  max-width: 528px;
+}
+.FaQuoteRightpro {
+  color: rgba(225, 223, 215, 0.2);
+  font-size: 50px;
+  margin-left: auto;
+}
+.aboutdiv {
+  /* margin-left: 30px; */
+  margin-top: 3.5rem;
+  display: grid;
+  gap: 10px;
+}
+.about_class h4 {
+  font-weight: 700;
+}
+.about_class {
+  width: 100%;
+  border: 1px solid #71717194;
+  border-radius: 20px;
+  padding: 25px;
+  height: 195px;
+}
+.scrollable-content {
+  max-height: 100px;
+  overflow-y: auto;
+  margin: 5px 0 0;
+  padding-right: 5px;
+}
+/* Scrollbar Styling */
+.scrollable-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+/* myclass */
+.about_class1 {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrollbar-student-myclass {
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.scrollbar-student-myclass::-webkit-scrollbar {
+  height: 8px;
+  background-color: #f4f4f4;
+}
+
+.scrollbar-student-myclass::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.scrollbar-student-myclass::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+.scrollbar-student-myclass {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+.description-student {
+  max-width: 291px;
+}
+/* Outer container with light gray background */
+.studentclass_outer {
+  width: 75px;
+  height: 22px;
+  background-color: #c7c6bf;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 3px;
+  margin-left: 12px;
+}
+
+/* Style for 75% progress */
+.studentclass_complete75 .studentclass_inner {
+  width: 55px;
+  background-color: #34b175;
+  color: white;
+}
+
+/* Style for 100% progress */
+.studentclass_complete100 .studentclass_inner {
+  width: 100%;
+  background-color: #34b175;
+  color: white;
+}
+
+/* Inner progress element */
+.studentclass_inner {
+  height: 100%;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+}
+.btn-text-student {
+  padding: 10px 10px;
+  font-size: 17px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+}
+
+.btn-starts {
+  background-color: transparent;
+  color: #cb3530 !important;
+  border: 1px solid #cb3530;
+}
+
+.btn-details {
+  background-color: transparent;
+  color: black !important;
+  border: 1px solid #0f0f0f80;
+}
+/* ///pyment */
+.payment-imgstd {
+  height: 135px;
+  width: 205px;
+  border-radius: 15px;
+}
+.payment-card {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-success-student,
+.btn-fail {
+  width: 200px;
+}
+.btn-success-student {
+  background-color: #34b175;
+}
+.btn-fail {
+  background-color: #cb3530;
+}
+.payment-price {
+  font-weight: 700;
+  font-size: 25px;
+  text-align: right;
+  margin-right: 8%;
+}
+.payment-details {
+  margin-left: 15px;
+}
+.payment-details p {
+  color: #0f0f0f80;
+  max-width: 415px;
+}
+
+.payment-history-container {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.payment-history {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.imganddlex {
+  display: flex;
+}
+.studenttext {
+  width: 100%;
+  font-size: 17px;
+  padding-left: 1.5rem;
+  padding: 20px;
+  background-color: rgb(218 216 208);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+}
+.student-flex-itemsedit {
+  display: flex;
+  gap: 20px;
+}
+.btn-save {
+  background-color: black;
+  font-size: 20px;
+  font-weight: 500;
+}
+.studentmyprofile2 p{
+  margin-top: 0.25rem;
+  font-size: 15px;
+  color: #0f0f0fb3;
+  font-size: 20px;
+}
+.studentmyprofile2 h2{
+  font-family: 40px;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .imganddlex {
+    display: block;
+  }
+  .payment-card {
+    display: block;
+  }
+  .payment-price {
+    text-align: center;
+    margin-right: 0px;
+  }
+  .btn-success-student,
+  .btn-fail {
+    display: flex;
+    margin-top: 0 auto;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .payment-details p {
+    margin: 0 auto;
+    line-height: normal;
+  }
+  .payment-details {
+    text-align: center;
+    margin-left: 0px;
+  }
+  .payment-imgstd {
+    margin: 0 auto;
+    display: block;
+  }
+  .student-flex-itemsedit {
+    display: block;
+  }
+}

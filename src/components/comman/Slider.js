@@ -1,5 +1,5 @@
 // import React from 'react'
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import { CiSearch } from "react-icons/ci";
 import './Slider.css'
@@ -10,6 +10,7 @@ import slide3 from '../../image/home/8.png';
 import slide4 from '../../image/home/9.png';
 import { GrFormPreviousLink } from "react-icons/gr";
 import { GrFormNextLink } from "react-icons/gr";
+import { Modal } from 'react-bootstrap';
 
 
 function Slider1() {
@@ -55,7 +56,55 @@ function Slider1() {
             }
         ]
     };
+    const slideData = [
+        {
+            id: 1,
+            imgSrc: slide1,
+            title: "Wrestling",
+            description: "A grappling sport focused on takedowns, holds, and pins, enhancing strength and agility.",
+            buttonText: "Read More"
+        },
+        {
+            id: 2,
+            imgSrc: slide2,
+            title: "Brazilian Jiu Jitsu",
+            description: "A ground-based martial art emphasizing submissions and positional control using leverage and technique.",
+            buttonText: "Read More"
+        },
+        {
+            id: 3,
+            imgSrc: slide3,
+            title: "Judo",
+            description: "A Japanese martial art focused on throws, joint locks, and pins, teaching how to use an opponent's force against them.",
+            buttonText: "Read More"
+        },
+        {
+            id: 4,
+            imgSrc: slide4,
+            title: "Boxing",
+            description: "A striking discipline that develops punches, footwork, and defense, improving fitness and coordination.",
+            buttonText: "Read More"
+        },
+        {
+            id: 5,
+            imgSrc: slide2,
+            title: "Brazilian Jiu Jitsu",
+            description: "A ground-based martial art emphasizing submissions and positional control using leverage and technique.",
+            buttonText: "Read More"
+        }
+    ];
+    const [showViewMoreModal, setShowViewMoreModal] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(null);
 
+    const handleOpenModal = (slide) => {
+        setCurrentSlide(slide);
+        setShowViewMoreModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowViewMoreModal(false);
+        setCurrentSlide(null);
+    };
     return (
         <div >
             <section className='slider'>
@@ -69,56 +118,51 @@ function Slider1() {
                         </div>
                     </div>
                 </div>
-                <div className="slide-div">                
+                <div className="slide-div">
                     <div className="slider-container">
-                    <Slider
-                        ref={slider => {
-                            sliderRef = slider;
-                        }}
-                        {...settings}
-                    >
-                        <div key={1} className="slide-card">
-                            <img src={slide1} alt="img" />
-                            <h2>Wrestling</h2>
-                            <p>A grappling sport focused on takedowns, holds, and pins, enhancing strength and agility.</p>
-                             <Button className="btn2" text={"Read More"}/>
+                        <Slider
+                            ref={slider => {
+                                sliderRef = slider;
+                            }}
+                            {...settings}
+                        >
+                            {slideData.map(slide => (
+                                <div key={slide.id} className="slide-card">
+                                    <img src={slide.imgSrc} alt="img" />
+                                    <h2>{slide.title}</h2>
+                                    <p>{slide.description}</p>
+                                    <button className="btn2" onClick={() => handleOpenModal(slide)}>View More</button>
+                                </div>
+                            ))}
+                        </Slider>
+                        <div style={{ textAlign: "center" }} className="btn-3">
+                            <button className="button previous" onClick={previous}>
+                                <GrFormPreviousLink className="under-next" />
+                            </button>
+                            <button className="button next" onClick={next}>
+                                <GrFormNextLink className="under-next" />
+                            </button>
                         </div>
-                        <div key={2} className="slide-card">
-                            <img src={slide2} alt="img" />
-                            <h2>Brazilian Jiu Jitsu</h2>
-                            <p>A ground-based martial art emphasizing submissions and positional control using leverage and technique.</p>
-                             <Button className="btn2" text={"Read More"}/>
-                        </div>
-                        <div key={3} className="slide-card">
-                            <img src={slide3} alt="img" />
-                            <h2>Judo</h2>
-                            <p>A Japanese martial art focused on throws, joint locks, and pins, teaching how to use an opponent's force against them.</p>
-                             <Button className="btn2" text={"Read More"}/>
-                        </div>
-                        <div key={4} className="slide-card">
-                            <img src={slide4} alt="img" />
-                            <h2>Boxing</h2>
-                            <p>A striking discipline that develops punches, footwork, and defense, improving fitness and coordination.</p>
-                             <Button className="btn2" text={"Read More"}/>
-                        </div>
-                        <div key={5} className="slide-card">
-                        <img src={slide2} alt="img" />
-                        <h2>Brazilian Jiu Jitsu</h2>
-                            <p>A ground-based martial art emphasizing submissions and positional control using leverage and technique.</p>
-                             <Button className="btn2" text={"Read More"}/>
-                        </div>
+                        {/* Modal */}
+                        <Modal show={showViewMoreModal} onHide={handleCloseModal} centered dialogClassName="modelo_silder">
+                            {/* <Modal.Header closeButton></Modal.Header> */}
+                            <Modal.Body className="sliderbody">
+                                {currentSlide && (
+                                    <>
+                                        <img src={currentSlide.imgSrc} alt={currentSlide.title} className="modal-image" />
+                                        <div className="suneddilidtitle">
+                                            <h2>{currentSlide.title}</h2>
+                                        </div>
+                                        <div className="descriptionviw">
+                                            <textarea rows='4' cols='60' value={currentSlide.description}></textarea>
+                                        </div>
 
+                                    </>
+                                )}
+                            </Modal.Body>
+                        </Modal>
 
-                    </Slider>
-                    <div style={{ textAlign: "center" }} className="btn-3">
-                        <button className="button previous" onClick={previous}>
-                        <GrFormPreviousLink className="under-next" />
-                        </button>
-                        <button className="button next" onClick={next}>
-                        <GrFormNextLink className="under-next"/>
-                        </button>
                     </div>
-                </div>
                 </div>
 
             </section>
