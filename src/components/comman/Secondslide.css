@@ -72,8 +72,8 @@
     line-height: 16px;
     padding-bottom: 24px;
     padding-top: 8px;
-    padding-left: 12px;
-    padding-right: 12px;    
+    /* padding-left: 12px; */
+    /* padding-right: 12px;     */
     background-color: black;
     border-radius: 9999px;
     width: 89px;
