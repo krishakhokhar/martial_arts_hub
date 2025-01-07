@@ -8,7 +8,7 @@ import Studentcolsecond from '../Studentcolsecond';
 import Getintouch from '../../../../comman/Getintouch'
 import Footer from '../../../../comman/Footer'
 
-function Studentprofile(savedData ) {
+function Studentprofile( ) {
   const classes = [
     {
       title: "Wrestling",
@@ -86,7 +86,7 @@ function Studentprofile(savedData ) {
                 </div>
                 <div className='about_class'>
                     <h4>Additional Details</h4>
-                    <p className='scrollable-content'>{studentData?.additionalDetails || 'No about found'}</p>
+                    <p className='scrollable-content'>{studentData?.additionlDetail || 'No about found'}</p>
                 </div>
             </div>
                 <div className="about_class about_class1">

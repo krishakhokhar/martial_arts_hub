@@ -112,7 +112,7 @@ function Dashbord() {
                       </span>
                     </div>
                     <div className='camera'>
-                      <HiOutlineCamera className='camerafont' />
+                      <HiOutlineCamera className='camerafont' onClick={studentprofile} />
                     </div>
                   </div>
                   <div className='profile-details'>

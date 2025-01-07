@@ -284,6 +284,9 @@
     display: flex;
     justify-content: flex-end;
   }
+  .main-discipline {
+    margin-top: 70px;
+  }
 }
 /* .......................describe....end.............................................. */
 
@@ -763,8 +766,8 @@
   padding-bottom: 30px;
 }
 @media only screen and (max-width: 768px) {
-  .our{
-    padding-top:40px;
+  .our {
+    padding-top: 40px;
   }
 }
 
@@ -907,6 +910,12 @@
   .lead-btn {
     margin-left: 45px;
   }
+  .whay-join {
+    padding-bottom: 0px;
+  }
+  .Frequently {
+    padding-bottom: 5px;
+  }
 }
 .section-type {
   padding-left: 32px;
@@ -1005,12 +1014,38 @@
   color: var(--textcolor);
 }
 /* Frequently.....end................................................ */
-.btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: transparent !important;
 }
-.blur-background{
+.blur-background {
   filter: blur(5px);
   transition: filter 0.3s ease;
+}
+@media (max-width: 400px) {
+  .start-button {
+    margin-left: 70px !important;
+    margin-top: 10px;
+  }
+  .Already-Member {
+    margin-left: 40px !important;
+    margin-top: 15px;
+  }
+  .main-discipline {
+    margin-top: 70px;
+  }
+  .noyify-input textarea,
+  .noyify-input input {
+    width: 265px;
+  }
+  .whay-join {
+    padding-bottom: 0px;
+  }
+  .Frequently {
+    padding-bottom: 5px;
+  }
 }

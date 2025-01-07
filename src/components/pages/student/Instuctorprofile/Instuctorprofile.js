@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import './Instuctorprofile.css';
 import { RiVerifiedBadgeFill } from 'react-icons/ri';
 import { TbVector } from 'react-icons/tb';
@@ -9,59 +9,12 @@ import { IoMdHeart, IoMdStar } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GoShareAndroid } from 'react-icons/go';
 import { AiOutlineMessage } from 'react-icons/ai';
-import { FaArrowUpLong, FaQuoteLeft, FaStar } from 'react-icons/fa6';
-import img24 from '../../../../image/home/24.png'
-import Secondslide from '../../../comman/Secondslide'
-import Getintouch from '../../../comman/Getintouch'
-import Footer from '../../../comman/Footer'
-import Slider from "react-slick";
-import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
+import { FaArrowUpLong } from 'react-icons/fa6';
+import Secondslide from '../../../comman/Secondslide';
+import Getintouch from '../../../comman/Getintouch';
+import Footer from '../../../comman/Footer';
 
-function Instuctorprofile() {
-    const naviget = useNavigate()
-    const classbook = () => {
-        naviget('/BookClassform')
-    }
-    let sliderRef = useRef(null);
-    const next = () => {
-        sliderRef.slickNext();
-    };
-    const previous = () => {
-        sliderRef.slickPrev();
-    };
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
+function InstructorProfile() {
     const experiencePoints = [
         "Over 20 years of martial arts experience.",
         "Specialized in Karate, Taekwondo, and Brazilian Jiu-Jitsu.",
@@ -105,20 +58,27 @@ function Instuctorprofile() {
         "Opened own dojo in 2010, focusing on personalized and group martial arts training",
         "Continuously attending seminars and workshops to stay updated with the latest martial arts techniques and teaching methods"
     ];
+    
+    const [bookNowClicked, setBookNowClicked] = useState(false);
+    const navigate = useNavigate();
     const location = useLocation();
     const { instructor } = location.state || {}; // Get instructor data passed to this component
 
-    // If no instructor data is available, handle it
+    const handleBookNow = () => {
+        setBookNowClicked(true);
+        navigate('/BookClassform', { state: { instructor } }); // Pass instructor data
+    };
+
     if (!instructor) {
         return <div>No instructor data available. Please go back and select an instructor.</div>;
     }
 
     return (
-        <div className="container-fluid" style={{overflow:'hidden'}}>
+        <div style={{ overflow: 'hidden' }}>
             <div className="myprofilpage2 row">
                 <div className="col-md-9 manicol">
                     <div>
-                        <div className="head-button">
+                        <div className=" head-button">
                             {['Martial Arts', 'Karate', 'Taekwondo', 'Jiu-Jitsu'].map((text, idx) => (
                                 <Button key={idx} text={text} />
                             ))}
@@ -178,7 +138,7 @@ function Instuctorprofile() {
                                 </div>
                             ))}
                         </div>
-                        <div >
+                        <div>
                             <h3>Training History</h3>
                             {history.map((item, index) => (
                                 <p key={index}>
@@ -218,7 +178,7 @@ function Instuctorprofile() {
                             </table>
                         </div>
                         <div className='buttonsinst'>
-                            <button onClick={classbook}>Book Now</button>
+                            <button onClick={handleBookNow}>Book Now</button>
                             <button> <AiOutlineMessage className='buttonlisticon' />  Send a message</button>
                             <button> <GoShareAndroid className='buttonlisticon' />   Share Instructor’s Profile</button>
                         </div>
@@ -232,98 +192,7 @@ function Instuctorprofile() {
                     <Button className='Start-Today1 newget' text={'Get the App'} icone={<FaArrowUpLong className='arrow' />}></Button>
                 </section>
             </div>
-            <div className='rewisection'>
-                <div style={{ display: 'flex' }}>
-                    <h3 style={{ marginTop: '5px' }}>Reviews</h3>
-                    <div style={{ display: 'flex', marginLeft: '6px', marginTop: '11px' }}>
-                        <FaStar className='inparopages' />
-                        <p className='revwutip'>4.3 <span style={{ textDecoration: 'underline' }}>(25 Reviews)</span></p>
-                    </div>
-                </div>
-                <div style={{ textAlign: "center", marginBottom: '20px' }}>
-                    <button className="button previous" onClick={previous}>
-                        <GrFormPreviousLink className="under-next prev2" />
-                    </button>
-                    <button className="button next" onClick={next}>
-                        <GrFormNextLink className="under-next next2" />
-                    </button>
-                </div>
-            </div>
-            <div className="slider-container" style={{ width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
-                <Slider
-                    ref={slider => {
-                        sliderRef = slider;
-                    }}
-                    {...settings}
-                >
-                    <div key={1} className="slideprofile">
-                        <FaQuoteLeft className="FaQuoteLeftinspro" />
-                        <p>Training here has been a transformative experience. I've gained confidence, discipline, and strength, thanks to the supportive and skilled instructors.</p>
-                        <div className="Sarah">
-                            <div>
-                                <img src={img24} alt="img" className="srakimimg" />
-                            </div>
-                            <div style={{ marginTop: '1%' }}>
-                                <h3 style={{ marginBottom: '0px' }}>Sarah Kim</h3>
-                                <div className="star">
-                                    <div className="flex items-center star2">
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                    </div>
-                                    <span className="rating">4.3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div key={2} className="slideprofile">
-                        <FaQuoteLeft className="FaQuoteLeftinspro" />
-                        <p>Training here has been a transformative experience. I've gained confidence, discipline, and strength, thanks to the supportive and skilled instructors.</p>
-                        <div className="Sarah">
-                            <div>
-                                <img src={img24} alt="img" className="srakimimg" />
-                            </div>
-                            <div style={{ marginTop: '1%' }}>
-                                <h3 style={{ marginBottom: '0px' }}>Sarah Kim</h3>
-                                <div className="star">
-                                    <div className="flex items-center star2">
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                    </div>
-                                    <span className="rating">4.3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div key={3} className="slideprofile">
-                        <FaQuoteLeft className="FaQuoteLeftinspro" />
-                        <p>Training here has been a transformative experience. I've gained confidence, discipline, and strength, thanks to the supportive and skilled instructors.</p>
-                        <div className="Sarah">
-                            <div>
-                                <img src={img24} alt="img" className="srakimimg" />
-                            </div>
-                            <div style={{ marginTop: '1%' }}>
-                                <h3 style={{ marginBottom: '0px' }}>Sarah Kim</h3>
-                                <div className="star">
-                                    <div className="flex items-center star2">
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                        <IoMdStar />
-                                    </div>
-                                    <span className="rating">4.3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Slider>
-            </div>
+        
             <section className='md:py-space pb-20 lg:px-8 our '>
                 <Secondslide />
             </section>
@@ -333,4 +202,4 @@ function Instuctorprofile() {
     );
 }
 
-export default Instuctorprofile;
+export default InstructorProfile;

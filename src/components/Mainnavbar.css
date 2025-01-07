@@ -821,3 +821,8 @@ width: 100px !important;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1050;
 }
+@media (max-width: 400px) {
+  .logo {
+    font-size: 22px;
+  }
+}

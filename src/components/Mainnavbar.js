@@ -53,7 +53,7 @@ function Mainnavbar({ text }) {
     const mainContent = document.getElementById("main-content");
     const loginModal = document.getElementById("login-modal");
 
-    if (showSuccessModal || showLoginSuccessModal||showLogoutConfirm) {
+    if (showSuccessModal || showLoginSuccessModal || showLogoutConfirm) {
       mainContent.classList.add("blur-background");
       if (loginModal) loginModal.classList.add("blur-background");
     } else {
@@ -205,6 +205,9 @@ function Mainnavbar({ text }) {
           email: email,
           password: password
         });
+        // const { name, email } = response.data.data;
+        localStorage.setItem("StudentToken", response.data.Token);
+        localStorage.setItem("studentId", response.data.data._id);
         if (response.status === 200) {
           setShowLoginSuccessModal(true); // Show success modal
           const userData = response.data.data; // Assuming the user data is in response.data.data
@@ -212,7 +215,7 @@ function Mainnavbar({ text }) {
           setUserName(userData.name); // Set user's name from response
           localStorage.setItem("userEmail", userData.email); // Store email in local storage
           localStorage.setItem("userName", userData.name); // Store name in local storage
-          setIsSignedUp(true); 
+          setIsSignedUp(true);
         }
       } catch (error) {
         if (error.response) {
@@ -244,10 +247,10 @@ function Mainnavbar({ text }) {
     navigate("/"); // Redirect to home or login page
   };
 
-// Open modal for logout
-const handleLogout = () => {
-  setShowLogoutConfirm(true); 
-};
+  // Open modal for logout
+  const handleLogout = () => {
+    setShowLogoutConfirm(true);
+  };
 
 
   const Navigat = useNavigate("");

@@ -82,7 +82,7 @@ function Secondslide() {
     };
 
     const hendaleclik = (slide) => {
-        navigat1('/Instuctorprofile', { state: { instructor: slide } });
+        navigat1('/InstructorProfile', { state: { instructor: slide } });
     };
   const navigat=useNavigate()
     const click=()=>{

@@ -429,3 +429,8 @@
     width: 100%;
   }
 }
+@media(max-width:400px){
+  .pading-my-main {
+    padding: 20px;
+}
+}

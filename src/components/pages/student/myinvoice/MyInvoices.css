@@ -117,3 +117,33 @@ td {
     padding-left: 10px;
   }
 }
+@media (max-width: 400px) {
+  .hrin {
+    width: 84%;
+  }
+  .invoiceno {
+    line-height: 17px;
+  }
+  .flexinvoice5 {
+    margin-left: 0px;
+    margin-right: 0%;
+  }
+  .hrin2 {
+    width: 249%;
+  }
+  tbody tr td{
+    padding: 0px;
+  }
+  .invoicedwonloadbtn{
+    padding-right: 15px;
+    width: 158px;
+    font-size: 13px;
+    height: 36px;
+  }
+  .table2{
+    padding-right: 5px;
+  }
+  .upcommingwre {
+    line-height: 18px;
+}
+}

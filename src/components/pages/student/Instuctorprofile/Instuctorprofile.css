@@ -108,42 +108,30 @@ h3 {
   color: #71717140;
   font-size: 50px;
 }
-.slideprofile {
-  border: 1px solid #8484844d;
-  padding: 15px 50px 15px 50px;
-  border-radius: 15px;
-  width: 95% !important;
-  /* margin-bottom: 50px; */
-}
-.slideprofile p {
-  max-width: 430px;
-  font-size: 17px;
-  color: #0f0f0fb2;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-.Sarah {
-  display: flex;
-}
-.srakimimg {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  filter: grayscale(2);
-  object-fit: cover;
-}
 
 @media (max-width: 768px) {
   .profile-sidebar {
     padding-left: 33px;
   }
-  .slideprofile {
-    padding: 10px 10px 10px 10px;
+}
+@media (max-width: 400px) {
+  .support {
+    max-width: 265px;
+    font-size: 30px;
   }
-  .Sarah {
-    display: block;
+  .aboutcins,
+  .hourclass {
+    max-width: 269px;
   }
-  .slideprofile{
-    width: 100% !important;
+  .expiryonce ul li {
+    max-width: 260px;
+  }
+  .manicol {
+    padding-left: 45px !important;
+    padding-right: 32px !important;
+  }
+  .sliderimg-container img {
+    height: 300px;
+    width: 268px;
   }
 }

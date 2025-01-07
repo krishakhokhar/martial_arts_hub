@@ -47,7 +47,7 @@ function App() {
       {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && location.pathname!=="/BookClassform" && <Mainnavbar text={navItems} />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
+        {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
         <Route path="/Dashbord" element={<Dashboard />} />
         <Route path="/MyMessages" element={<MyMessages />} />
         <Route path="/MyClasses" element={<MyClasses />} />
@@ -68,7 +68,7 @@ function App() {
         <Route path="/ResetPassword" element={<ResetPassword />} />
         <Route path="/FavoriteInstructors" element={<FavoriteInstructors />} />
         <Route path="/BookingHistory" element={<BookingHistory />} />
-        <Route path="/Instuctorprofile" element={<Instuctorprofile />} />
+        <Route path="/InstructorProfile" element={<Instuctorprofile />} />
         <Route path="/BookClassform" element={<BookClassform />} />
         {/* instuctor............................... */}
         <Route path="/Instuctorsignup" element={<Instuctorsignup />} />

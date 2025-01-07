@@ -1,4 +1,32 @@
-.bookclassback{
-    font-size: 60px;
-    margin: 100px;
+.bookclassback {
+  font-size: 60px;
+  margin: 50px 50px 30px 50px;
+}
+.bokkclasamargin {
+  margin: 30px 10px 10px 100px;
+}
+.instproq {
+  height: 400px;
+  width: 332px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+.instructor-name {
+  font-weight: 800;
+}
+.pound {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+.pound-hr {
+  position: relative;
+  padding: 35px 16px 16px 14px;
+  width: 100px;
+  color: white;
+  font-weight: 800;
+}
+.pound-sapn {
+  font-size: 25px;
+  font-weight: 400;
 }
