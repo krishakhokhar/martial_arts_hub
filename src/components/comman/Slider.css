@@ -144,10 +144,10 @@
 .next {
   margin-top: 25px !important;
   border-radius: 100% !important;
-  height: 45px !important;
-  width: 45px !important;
+  height: 30px !important;
+  width: 430px !important;
   color: var(--communcolor) !important;
-  font-size: 30px !important;
+  font-size: 21px !important;
   border: 1px solid var(--communcolor);
   margin-left: 10px !important;
   background-color: transparent !important;
