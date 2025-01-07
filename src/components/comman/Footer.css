@@ -89,8 +89,8 @@
     width: 100%;
   }
   .relative2 input {
-    width: 100%;
-  }
+    width: 79%;
+}
   .footer-join {
     transform: translate(256px, -51px) !important;
   }
@@ -98,5 +98,8 @@
 @media (max-width: 400px) {
   .footer-join {
     transform: translate(195px, -51px) !important;
+  }
+  .navbar-toggler-icon {
+    width: 2.5em;
   }
 }
