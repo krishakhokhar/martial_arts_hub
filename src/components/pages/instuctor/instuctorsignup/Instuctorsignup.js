@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import './Instuctorsignup.css';
 import signupimg from '../../../../image/home/20.png';
 import { FaArrowLeft, FaQuoteLeft } from 'react-icons/fa';
@@ -7,83 +7,106 @@ import axios from "axios";
 import eye from '../../../../image/home/eye.png';
 import eyeslash from '../../../../image/home/eyeslash.png';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../../../comman/Footer'
+import Footer from '../../../comman/Footer';
 import Modal from 'react-bootstrap/Modal';
 import { BsCheck } from 'react-icons/bs';
-
-
+import baseUrl from '../../../../baseUrl';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Instuctorsignup() {
-    const Navigat = useNavigate("")
-    const home = () => {
-        Navigat("/");
-    };
-
-    const Navigat1 = useNavigate("")
-    const login = () => {
-        Navigat1("/Becomeinlogin")
-    };
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({});
+    const [isSignedUp, setIsSignedUp] = useState(false);
     const [userEmail, setUserEmail] = useState(null);
+    const [errors, setErrors] = useState({});
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
+
     const closeSuccessModal = () => {
         setShowSuccessModal(false);
-        navigate('/MyProfileform')
-    }
+        navigate('/MyProfileform');
+    };
+
     const validateForm = () => {
         const newErrors = {};
+
+        // Validate email
         if (!formData.email) {
             newErrors.email = 'Email is required!';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid!';
+            newErrors.email = 'Invalid email format!';
         }
+
+        // Validate password
         if (!formData.password) {
             newErrors.password = 'Password is required!';
-        } else if (formData.password.length < 6) {
-            newErrors.password = 'Password must be at least 6 characters!';
-        }
-        if (!formData.confirmpass) {
-            newErrors.confirmpass = 'Confirm password is required!';
-        } else if (formData.confirmpass !== formData.password) {
-            newErrors.confirmpass = 'Passwords do not match!';
         }
 
+        // Validate confirm password
+        if (!formData.confirmPassword) {
+            newErrors.confirmPassword = 'Confirm password is required!';
+        } else if (formData.confirmPassword !== formData.password) {
+            newErrors.confirmPassword = 'Passwords do not match!';
+        }
+
+        // Update errors state
         setErrors(newErrors);
+
+        // Return true if no errors
         return Object.keys(newErrors).length === 0;
     };
-    const postData = (event) => {
-        event.preventDefault();
-        if (validateForm()) {
-            setShowSuccessModal(true);
-            localStorage.setItem('userEmail', formData.email);
-            //   localStorage.setItem('userName', formData.name);
+    const postData = async (event) => {
+        try {
+            event.preventDefault();
+            if (validateForm()) {
+                setIsSignedUp(true); // Keep the sign-up modal open
+                localStorage.setItem("userEmail", formData.email);
 
-            setUserEmail(formData.email);
-            //   setUserName(formData.name);
+                setUserEmail(formData.email);
 
+                // API request
+                const response = await axios.post(`${baseUrl}/instructor/signup`, {
+                    email: formData.email,
+                    password: formData.password,
+                    confirmPassword: formData.confirmPassword,
+                });
 
-            axios.post("http://localhost:3000/insructorsignup", {
-                email: formData.email,
-                password: formData.password,
-                confirmpass: formData.confirmpass,
-            })
-                .then(() => {
-                    setFormData({ name: '', email: '', password: '', confirmpass: '' });
+                if (response.status === 201) {
+                    // Signup success
+                    setFormData({ email: "", password: "", confirmPassword: "" });
                     setErrors({});
-                })
-                .catch((error) => console.error("Error:", error));
+                    setShowSuccessModal(true); // Show success modal
+                    toast.success("Signup successful!"); // Success message
+                }
+            }
+        } catch (error) {
+            console.error("Error details:", error);
+            if (error.response) {
+                if (error.response.status === 400) {
+                    setErrors({ email: "Email already in use. Please try another email." });
+                    toast.error("Email already in use.");
+                } else {
+                    // Handle other status codes and show error messages
+                    toast.error(`Error: ${error.response.data.message || 'Something went wrong!'}`);
+                }
+            } else if (error.request) {
+                // No response received from the server
+                console.error("No response received:", error.request);
+                toast.error("Server not responding. Please try again later.");
+            } else {
+                // General unexpected error
+                console.error("Unexpected error:", error.message);
+                toast.error("An unexpected error occurred. Please try again.");
+            }
         }
-    };
+    }
+
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
-
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmpass: ''
-    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -92,12 +115,13 @@ function Instuctorsignup() {
             [name]: value,
         }));
     };
+
     return (
         <div>
             <div className='main-padding2'>
                 <div className='flex-item'>
                     <div className='formlogin2'>
-                        <FaArrowLeft className='iconearrow' onClick={home} />
+                        <FaArrowLeft className='iconearrow' onClick={() => navigate("/")} />
                         <h2>Welcome Instructor!</h2>
                         <p>Please fill below details to join<span>martial arts hub</span> as a student!</p>
                         <form name='form2' id='form' onSubmit={postData}>
@@ -110,7 +134,7 @@ function Instuctorsignup() {
                                     </div>
                                 </div>
                                 <div className='email-login'>
-                                    <label>Create Password</label>
+                                    <label>Create Password </label>
                                     <div className='email-input'>
                                         <input
                                             type={isPasswordVisible ? "text" : "password"}
@@ -136,9 +160,9 @@ function Instuctorsignup() {
                                         <input
                                             type={isPasswordVisible ? "text" : "password"}
                                             placeholder='Re-enter password'
-                                            name='confirmpass'
+                                            name='confirmPassword'
                                             id='confirmpass'
-                                            value={formData.confirmpass}
+                                            value={formData.confirmPassword}
                                             onChange={handleChange}
                                         />
                                         <img
@@ -148,7 +172,7 @@ function Instuctorsignup() {
                                             className="eye"
                                             style={{ cursor: "pointer" }}
                                         />
-                                        {errors.confirmpass && <div className="error-message">{errors.confirmpass}</div>}
+                                        {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
                                     </div>
                                 </div>
                             </div>
@@ -156,10 +180,9 @@ function Instuctorsignup() {
                                 <button className="loginaccount" type='submit'>Create My Profile & Next</button>
                                 <button className='loginaccount2'><AiOutlineGoogle className='iconeg' /> Sign Up with Google</button>
                             </div>
-                            <p className='signop'>Already have an account? <span className='link' onClick={login}>Login</span></p>
+                            <p className='signop'>Already have an account? <span className='link'>Login</span></p>
                         </form>
                     </div>
-
 
                     <div className='img-div3'>
                         <img src={signupimg} alt='img' className='karate2' />
@@ -179,7 +202,6 @@ function Instuctorsignup() {
             </div>
             <Footer />
 
-
             {/* Success Modal (Only for Sign Up) */}
             <Modal show={showSuccessModal} onHide={closeSuccessModal} centered className='custom-modal'>
                 <Modal.Header closeButton></Modal.Header>
@@ -196,8 +218,21 @@ function Instuctorsignup() {
                     <button className="btn-LogIn" title="Close" onClick={closeSuccessModal}>Okay, Thanks!</button>
                 </Modal.Body>
             </Modal>
+            {/* Toast Container for notifications */}
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                progressClassName="toast-progress"
+            />
         </div>
-    )
+    );
 }
 
 export default Instuctorsignup

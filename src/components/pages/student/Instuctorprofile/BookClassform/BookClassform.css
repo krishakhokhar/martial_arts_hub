@@ -5,28 +5,261 @@
 .bokkclasamargin {
   margin: 30px 10px 10px 100px;
 }
-.instproq {
-  height: 400px;
-  width: 332px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
-.instructor-name {
-  font-weight: 800;
-}
-.pound {
-  height: 100px;
-  width: 100px;
-  position: absolute;
-}
-.pound-hr {
+.instructor-card {
   position: relative;
+}
+
+.sliderimg-container1 {
+  position: relative;
+  display: inline-block;
+}
+
+.instproq {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.price-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.badge-img {
+  position: absolute;
+  width: 100px !important;
+  height: 100px !important;
+  transform: translate(23px, 23px);
+}
+
+.badge-text {
+  position: absolute;
   padding: 35px 16px 16px 14px;
   width: 100px;
   color: white;
+  font-size: 30px;
   font-weight: 800;
+  transform: translate(22px, 19px);
 }
-.pound-sapn {
+
+.badge-text span {
   font-size: 25px;
   font-weight: 400;
+}
+
+.instructor-name {
+  font-weight: 800;
+}
+.heart-icon1 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background-color: white;
+  /* color: rgb(228, 50, 50); */
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+}
+.thunder {
+  font-size: 25px;
+  color: #cb3530;
+}
+.Availablebook {
+  font-size: 20px;
+  margin-top: 20px;
+}
+@media (max-width: 500px) {
+  .badge-img {
+    transform: translate(15px, 23px);
+    height: 90px !important;
+    width: 90px !important;
+  }
+  .badge-text {
+    font-size: 23px;
+    transform: translate(21px, 19px);
+  }
+  .bokkclasamargin {
+    margin: 30px 10px 10px 50px;
+  }
+}
+@media (max-width: 400px) {
+  .badge-img {
+    transform: translate(-35px, 23px);
+    height: 80px !important;
+    width: 80px !important;
+  }
+  .instproq {
+    width: 80%;
+    border-radius: 10px;
+  }
+  .heart-icon1 {
+    right: 25%;
+  }
+  .badge-text {
+    transform: translate(-28px, 19px);
+  }
+}
+/* col-md-8 */
+
+.bokk-classow h1 {
+  margin-top: 50px;
+  font-size: 35px;
+  font-weight: 700;
+}
+.bokk-classow p {
+  color: #0f0f0f80;
+  font-size: 19px;
+}
+.bookclasstext .msgbook {
+  font-size: 20px;
+}
+.bookclasstext textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #dad8d0;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.bookclasstext input,select {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #dad8d0;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.bookclasstext textarea ::placeholder {
+  font-size: 18px;
+}
+
+.bookclasstext {
+  flex: 1;
+}
+.book-class-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.class-type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.rediobook {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dad8d0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  height: 90px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rediobook input {
+  cursor: pointer;
+}
+.rediobook input[type="radio"] {
+  /* appearance: none; */
+  width: 25px;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.contact_details h3 {
+  padding-top: 50px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+.contact_details p {
+  color: #0f0f0f80;
+  font-size: 19px;
+}
+.next-btnbok{
+  background-color: black;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 55px;
+}
+@media (max-width: 1100px) {
+  .usecallpadding {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  .bookclasstext textarea {
+    width: 120%;
+  }
+}
+@media (max-width: 800px) {
+  .bookclasstext textarea {
+    width: 80%;
+  }
+  .usecallpadding {
+    margin-left: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .bookclasstext textarea {
+    width: 80%;
+  }
+  .usecallpadding {
+    margin-left: 50px;
+  }
+  .rediobook {
+    width: 80%;
+  }
+  .contact_details p{
+    max-width: 340px;
+  }
+  .bookclasstext .msgbook {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 61.666667% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .book-class-grid {
+    grid-template-columns: 1fr;
+  }
+  .class-type-grid {
+    grid-template-columns: 1fr;
+  }
+  .bookclasstext input,select {
+    width: 80%;
+  }
+  .rediobook {
+    width: 80%;
+  }
+ 
 }

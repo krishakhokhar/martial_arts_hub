@@ -540,13 +540,14 @@ width: 100px !important;
 }
 .modelboddy h2 {
   text-align: center;
-  /* padding-top: 50px; */
+  padding: 5px;
   padding-bottom: 10px;
   font-weight: 600;
   font-size: 36px;
 }
 .modelboddy p {
   font-size: 13px;
+  padding: 5px;
   color: #0f0f0f80;
   max-width: 375px !important;
   text-align: center !important;

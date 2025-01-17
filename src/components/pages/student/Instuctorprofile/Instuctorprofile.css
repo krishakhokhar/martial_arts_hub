@@ -135,3 +135,100 @@ h3 {
     width: 268px;
   }
 }
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+.maspro label {
+  font-size: 19px;
+}
+.maspro input {
+  height: 60px;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background-color: #dad8d0;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  outline: none;
+}
+.maspro textarea {
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background-color: #dad8d0;
+  padding: 20px;
+  margin-top: 5px;
+  outline: none;
+  margin-bottom: 5px;
+}
+.maspro textarea::placeholder {
+  font-size: 19px !important;
+}
+.maspro input::placeholder {
+  font-size: 19px !important;
+}
+
+.send-msgp p {
+  font-size: 17px;
+  color: #0f0f0f80;
+}
+.Sendrequest {
+  margin: 20px 0px 30px 0px;
+  background-color: #000000;
+  width: 160px;
+  height: 50px;
+  border-radius: 20px !important;
+}
+
+.maspro textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.maspro textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.maspro textarea::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.maspro textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.moaadel.blurred {
+  filter: blur(4px);
+  pointer-events: none; /* Prevent interaction with blurred content */
+}
+.rating-stars {
+  display: flex;
+  justify-content: center;
+}
+.imgrate {
+  width: 100%;
+}
+.starrate {
+  font-size: 45px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.ratingbutnsubmit {
+  width: 100%;
+}
+.ratreviefeed {
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  outline: none;
+  margin-bottom: 20px;
+  background-color: #dad8d0;
+}
+@media (max-width: 768px) {
+  .ratingbutnsubmit {
+    width: 90%;
+  }
+}

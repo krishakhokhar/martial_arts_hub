@@ -1,0 +1,51 @@
+.passfor {
+  font-size: 19px;
+  color: #0f0f0f80;
+  text-align: right;
+}
+.Proceed {
+  width: 100%;
+  height: 70px;
+  background-color: black;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.accountcreate {
+  font-size: 25px;
+  font-weight: 600;
+  width: 100%;
+  height: 70px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black !important;
+  background-color: transparent;
+  border: 1px solid black;
+}
+@media (max-width: 768px) {
+  .passfor {
+    text-align: start;
+  }
+  .Proceed {
+    width: 85%;
+    font-size: 17px;
+  }
+  .accountcreate {
+    width: 85%;
+    font-size: 17px;
+  }
+}
+@media (max-width: 500px) {
+    .passfor {
+      text-align: start;
+    }
+    .Proceed {
+      width: 75%;
+      font-size: 17px;
+    }
+    .accountcreate {
+      width: 75%;
+      font-size: 17px;
+    }
+  }

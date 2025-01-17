@@ -1,7 +1,6 @@
 import './App.css';
 import Mainnavbar from './components/Mainnavbar';
 import Home from './components/pages/home/Home';
-import AboutUs from './components/pages/about/AboutUs';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './components/pages/student/stddashbord/Dashbord '
 import MyMessages from './components/pages/student/stdmsg/MyMessages';
@@ -29,6 +28,9 @@ import FavoriteInstructors from './components/pages/student/studentprofile/Favor
 import BookingHistory from './components/pages/student/studentprofile/BookingHistory/BookingHistory';
 import Instuctorprofile from './components/pages/student/Instuctorprofile/Instuctorprofile';
 import BookClassform from './components/pages/student/Instuctorprofile/BookClassform/BookClassform';
+import PaymentCredit from './components/pages/student/Instuctorprofile/BookClassform/PaymentCredit/PaymentCredit';
+import Pymentbtn from './components/comman/pymentbutton/Pymentbtn';
+import Paypal from './components/pages/student/Instuctorprofile/BookClassform/paypal/Paypal';
 
 
 
@@ -44,7 +46,7 @@ function App() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && location.pathname!=="/BookClassform" && <Mainnavbar text={navItems} />}
+      {location.pathname !== "/DisputeStages" && location.pathname !== "/Arbrirtion" && location.pathname !== "/Negotiation" && location.pathname!=="/BookClassform"&&location.pathname!=="/PaymentCredit" && location.pathname!=="/Paypal" && <Mainnavbar text={navItems} />}
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/AboutUs" element={<AboutUs />} /> */}
@@ -70,6 +72,9 @@ function App() {
         <Route path="/BookingHistory" element={<BookingHistory />} />
         <Route path="/InstructorProfile" element={<Instuctorprofile />} />
         <Route path="/BookClassform" element={<BookClassform />} />
+        <Route path="/PaymentCredit" element={<PaymentCredit />} />
+        <Route path="/Paypal" element={<Paypal />} />
+       
         {/* instuctor............................... */}
         <Route path="/Instuctorsignup" element={<Instuctorsignup />} />
         <Route path="/MyProfileform" element={<MyProfile />} />

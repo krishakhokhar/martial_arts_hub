@@ -1,0 +1,42 @@
+.fillback {
+  font-size: 25px;
+  color: #6b6b6b;
+}
+.othrcredit-p {
+  font-size: 19px;
+  margin-top: -3px;
+  margin-left: 1%;
+  color: #0f0f0fb2;
+}
+.maincredit-icone {
+  padding: 24px;
+  background: #c9c8c1;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+.typepay-h1 {
+  font-size: 34px;
+  font-weight: 700;
+}
+.noteofpay{
+  color: #CB3530 !important;
+  font-size: 18px;
+}
+@media (max-width: 1100px) {
+  .maincredit-icone {
+    width: 130%;
+  }
+}
+@media (max-width: 768px) {
+  .maincredit-icone {
+    width: 85%;
+  }
+}
+@media (max-width: 500px) {
+  .maincredit-icone {
+    width: 75%;
+  }
+  .bokk-classow p {
+    max-width: 200px;
+  }
+}

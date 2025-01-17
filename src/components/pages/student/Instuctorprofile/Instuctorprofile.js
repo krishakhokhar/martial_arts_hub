@@ -13,8 +13,63 @@ import { FaArrowUpLong } from 'react-icons/fa6';
 import Secondslide from '../../../comman/Secondslide';
 import Getintouch from '../../../comman/Getintouch';
 import Footer from '../../../comman/Footer';
+import { Modal } from 'react-bootstrap';
+import { BsCheck } from "react-icons/bs";
+import img25 from '../../../../image/home/25.png'
 
 function InstructorProfile() {
+    const [showMessageModal, setShowMessageModal] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [messageSuccessModal, setMessageSuccessModal] = useState(false);
+    const [showRatingModal, setShowRatingModal] = useState(false);
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false); // New state for feedback modal
+    const [userRating, setUserRating] = useState(0);
+    const [feedback, setFeedback] = useState('');
+
+
+    // State for message modal fields
+    const [messageTitle, setMessageTitle] = useState('');
+    const [messageContent, setMessageContent] = useState('');
+    const [messageErrors, setMessageErrors] = useState({});
+
+    const location = useLocation();
+    const { instructor } = location.state || {}; // Get instructor data passed to this component
+    const navigate = useNavigate();
+
+    // const handleBack = () => {
+    //     navigate('/PaymentCredit');
+    // };
+
+    const openMessageModal = () => {
+        setShowMessageModal(true);
+    };
+
+    const closeMessageModal = () => {
+        setShowMessageModal(false);
+    };
+
+    const openSuccessModal = () => {
+        setShowSuccessModal(true);
+    };
+
+    const closeSuccessModal = () => {
+        setShowSuccessModal(false);
+        setShowRatingModal(true); // Open rating modal
+    };
+
+    const handleSendRequest = () => {
+        // Validate message title and content
+        const newErrors = {};
+        if (!messageTitle) newErrors.title = "Title is required.";
+        if (!messageContent) newErrors.content = "Message is required.";
+
+        if (Object.keys(newErrors).length > 0) {
+            setMessageErrors(newErrors);
+        } else {
+            openSuccessModal(); // Open the success modal
+        }
+    };
+
     const experiencePoints = [
         "Over 20 years of martial arts experience.",
         "Specialized in Karate, Taekwondo, and Brazilian Jiu-Jitsu.",
@@ -58,12 +113,8 @@ function InstructorProfile() {
         "Opened own dojo in 2010, focusing on personalized and group martial arts training",
         "Continuously attending seminars and workshops to stay updated with the latest martial arts techniques and teaching methods"
     ];
-    
-    const [bookNowClicked, setBookNowClicked] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { instructor } = location.state || {}; // Get instructor data passed to this component
 
+    const [bookNowClicked, setBookNowClicked] = useState(false);
     const handleBookNow = () => {
         setBookNowClicked(true);
         navigate('/BookClassform', { state: { instructor } }); // Pass instructor data
@@ -75,10 +126,10 @@ function InstructorProfile() {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            <div className="myprofilpage2 row">
+            <div className={`myprofilpage2 row ${showSuccessModal ? 'blur-background' : ''}`}>
                 <div className="col-md-9 manicol">
                     <div>
-                        <div className=" head-button">
+                        <div className="head-button">
                             {['Martial Arts', 'Karate', 'Taekwondo', 'Jiu-Jitsu'].map((text, idx) => (
                                 <Button key={idx} text={text} />
                             ))}
@@ -90,14 +141,14 @@ function InstructorProfile() {
                         </div>
                         <div className="aboutcins">
                             <h3>About Me</h3>
-                            <p>Hi, I'm Kia John! I started my martial arts journey 5 years ago and have been dedicated to improving my skills ever since. </p>
+                            <p>Hi, I'm Kia John! I started my martial arts journey 5 years ago and have been dedicated to improving my skills ever since.</p>
                             <p>Training in Karate, Taekwondo, and Brazilian Jiu-Jitsu has boosted my confidence, discipline, and physical fitness. I enjoy the challenges and continuous learning that come with martial arts.</p>
                         </div>
                         <div>
                             <h3>About the Class</h3>
                             <div className="head-button">
                                 <button><HiOutlineStatusOnline className="classabout" /> Online</button>
-                                <button> <TbVector className="classabout" /> All Levels</button>
+                                <button><TbVector className="classabout" /> All Levels</button>
                                 <button><IoLanguageOutline className="classabout" /> English</button>
                             </div>
                             <p className="hourclass">“This hour of martial arts training is a powerful gift to your body and mind, fostering inner strength and outer resilience. It’s not just about learning techniques; it’s about cultivating discipline, confidence, and a sense of empowerment.”</p>
@@ -179,7 +230,7 @@ function InstructorProfile() {
                         </div>
                         <div className='buttonsinst'>
                             <button onClick={handleBookNow}>Book Now</button>
-                            <button> <AiOutlineMessage className='buttonlisticon' />  Send a message</button>
+                            <button onClick={openMessageModal}> <AiOutlineMessage className='buttonlisticon' />  Send a message</button>
                             <button> <GoShareAndroid className='buttonlisticon' />   Share Instructor’s Profile</button>
                         </div>
                     </div>
@@ -192,12 +243,155 @@ function InstructorProfile() {
                     <Button className='Start-Today1 newget' text={'Get the App'} icone={<FaArrowUpLong className='arrow' />}></Button>
                 </section>
             </div>
-        
+
             <section className='md:py-space pb-20 lg:px-8 our '>
                 <Secondslide />
             </section>
             <Getintouch />
             <Footer />
+            {/* Message Modal */}
+            <Modal show={showMessageModal} onHide={closeMessageModal} centered className={`moaadel ${showSuccessModal || showRatingModal || showFeedbackModal || messageSuccessModal ? 'blurred' : ''}`}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                    <div style={{ padding: '20px' }}>
+                        <div className="send-msgp">
+                            <h3>Send a Message</h3>
+                            <p>Please write your message here. Your message will be sent as a request to the instructor. Once they accept your request, you can chat with them. Write your query below:</p>
+                        </div>
+                        <div className="maspro">
+                            <label>Title</label><br />
+                            <input
+                                type="text"
+                                placeholder="Enter Your Title"
+                                value={messageTitle}
+                                onChange={(e) => {
+                                    setMessageTitle(e.target.value);
+                                    setMessageErrors(prev => ({ ...prev, title: '' })); // Clear error on change
+                                }}
+                            />
+                            {messageErrors.title && <p className="error-message">{messageErrors.title}</p>}
+                        </div>
+                        <div className="maspro">
+                            <label>Message</label><br />
+                            <textarea
+                                placeholder="Write Your message here*"
+                                rows='7'
+                                cols='10'
+                                value={messageContent}
+                                onChange={(e) => {
+                                    setMessageContent(e.target.value);
+                                    setMessageErrors(prev => ({ ...prev, content: '' })); // Clear error on change
+                                }}
+                            ></textarea>
+                            {messageErrors.content && <p className="error-message">{messageErrors.content}</p>}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'end' }}>
+                            <button className="Sendrequest" title="Send Request" onClick={handleSendRequest}>
+                                Send Request
+                            </button>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Success Modal */}
+            <Modal show={showSuccessModal} onHide={closeSuccessModal} centered className='custom-modal '>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body className='modelboddy'>
+                    <div className="div3-warnin3">
+                        <div className="div2-warning2">
+                            <div className="div-warning1">
+                                <BsCheck className='sucsses' />
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Message Sent!</h2>
+                    <p>Your message has been successfully sent to our instructor. They will contact you shortly. In the meantime, feel free to explore our courses! Have a wonderful day!</p>
+                    <button className="btn-LogIn" title="Close" onClick={closeSuccessModal}>Okay!</button>
+                </Modal.Body>
+            </Modal>
+            {/* ratting model */}
+            <Modal show={showRatingModal} onHide={() => setShowRatingModal(false)} centered className='custom-modal'>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body className='modelboddy'>
+                    <img src={img25} alt="image" className="imgrate" />
+                    <h2>Rate Our Platform!</h2>
+                    <p>Thank you for visiting our platform! Your feedback helps us improve! Rate your experience to let us know what we’re doing right and where we can grow.</p>
+                    <div className="rating-stars">
+                        {[...Array(5)].map((_, index) => (
+                            <IoMdStar
+                                key={index}
+                                className="starrate"
+                                style={{
+                                    color: index < userRating ? '#ECB21E' : 'gray', // Change color based on rating
+                                }}
+                                onClick={() => setUserRating(index + 1)} // Set rating on click
+                            />
+                        ))}
+                    </div>
+                    <div>
+                        <button className="btn-LogIn ratingbutnsubmit" title="Submit Rating" onClick={() => {
+                            console.log("User  rating submitted:", userRating);
+                            setShowRatingModal(false);
+                            setShowFeedbackModal(true); // Open feedback modal after rating
+                        }}>
+                            Submit
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Feedback Modal */}
+            <Modal show={showFeedbackModal} onHide={() => setShowFeedbackModal(false)} centered className='custom-modal'>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body className='modelboddy'>
+                    <img src={img25} alt="image" className="imgrate" />
+                    <h2>Rate Our Platform!</h2>
+                    <p>Thank you for visiting our platform! Your feedback helps us improve! Rate your experience to let us know what we're doing right and where we can grow.</p>
+                    <textarea
+                        className="ratreviefeed"
+                        placeholder="Write Your message here*"
+                        rows='4'
+                        value={feedback}
+                        onChange={(e) => setFeedback(e.target.value)}
+                    />
+                    <div>
+                        <button className="btn-LogIn ratingbutnsubmit" title="Submit Feedback" onClick={() => {
+                            console.log("User feedback submitted:", feedback);
+                            setFeedback(''); // Clear feedback
+                            setShowFeedbackModal(false); // Close feedback modal
+                            setMessageSuccessModal(true); // Show success message modal
+                        }}>
+                            Submit
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+            {/* Message Success Modal */}
+            <Modal show={messageSuccessModal} onHide={() => setMessageSuccessModal(false)} centered className='custom-modal'>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body className='modelboddy'>
+                    <div className="div3-warnin3">
+                        <div className="div2-warning2">
+                            <div className="div-warning1">
+                                <BsCheck className='sucsses' />
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Response Received!</h2>
+                    <p>We greatly appreciate your time and feedback! Thank you for helping us improve, and we look forward to providing you with an even better experience in the future!</p>
+                    <div>
+                        <button
+                            className="btn-LogIn ratingbutnsubmit"
+                            onClick={() => {
+                                setMessageSuccessModal(false);
+                                setShowMessageModal(false)
+                            }}
+                        >
+                            Okay!
+                        </button>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

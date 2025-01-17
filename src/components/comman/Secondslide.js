@@ -84,10 +84,6 @@ function Secondslide() {
     const hendaleclik = (slide) => {
         navigat1('/InstructorProfile', { state: { instructor: slide } });
     };
-  const navigat=useNavigate()
-    const click=()=>{
-        navigat('/MyMessages')
-    }
     return (
         <div>
             <div className="slider-container">
@@ -132,7 +128,6 @@ function Secondslide() {
                                     <div>
                                         <button className="profile-btn" onClick={() => hendaleclik(slide)}>View Profile</button>
                                     </div>
-                                    <button className="message-btn" onClick={click}>Send a message</button> 
                                 </div>
                             </div>
                         </div>

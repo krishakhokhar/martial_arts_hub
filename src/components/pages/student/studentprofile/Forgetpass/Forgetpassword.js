@@ -10,10 +10,12 @@ import './Forgetpassword.css';
 import { MdTimer } from 'react-icons/md';
 import { IoMdArrowBack } from 'react-icons/io';
 import imgreset from '../../../../../image/home/22.png';
-import { toast, ToastContainer } from 'react-toastify'; // Importing toast
-import 'react-toastify/dist/ReactToastify.css'; // Importing CSS for toast
-import Getintouch from '../../../../comman/Getintouch.js'
-import Footer from '../../../../comman/Footer.js'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Getintouch from '../../../../comman/Getintouch.js';
+import Footer from '../../../../comman/Footer.js';
+import axios from 'axios';
+import baseUrl from '../../../../../baseUrl.js';
 
 function Forgetpassword() {
     const [email, setEmail] = useState('');
@@ -24,11 +26,15 @@ function Forgetpassword() {
     const [timer, setTimer] = useState(60);
     const [isResendEnabled, setIsResendEnabled] = useState(false);
     const [otpError, setOtpError] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [formData, setFormData] = useState({
+        NewPassword: "",
+        confrim_password: "",
+        studentId: "", // Ensure studentId is part of formData
+    });
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [passwordError, setPasswordError] = useState('');
+    const [generatedOtp, setGeneratedOtp] = useState(''); // Store the generated OTP
 
     const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
     const toggleConfirmPasswordVisibility = () => setConfirmPasswordVisible(!confirmPasswordVisible);
@@ -65,67 +71,125 @@ function Forgetpassword() {
         }
     };
 
-    const handleResendClick = () => {
+    const handleResendClick = async () => {
         if (isResendEnabled) {
             setTimer(60);
             setIsResendEnabled(false);
-            toast.success('OTP resent successfully!'); // Toast notification for OTP resend
+            try {
+                await axios.post(`${baseUrl}/student/forgot/password/resendotp`, { email });
+                toast.success('OTP resent successfully!');
+            } catch (error) {
+                toast.error('Failed to resend OTP. Please try again.');
+            }
         }
     };
 
-    const handleGetOtp = () => {
+    const handleGetOtp = async () => {
         if (!email) {
-            setOtpError('Please enter your email address.');
-            toast.error('Please enter your email address.'); // Toast notification for error
+            toast.error('Please enter your email address.');
             return;
         }
-        setShowSuccessModal(true);
+        try {
+            const response = await axios.post(`${baseUrl}/student/forgot/password/sendotp`, { email });
+            setFormData({ ...formData, studentId: response.data.studentId }); // Store studentId from response
+            setShowSuccessModal(true);
+        } catch (error) {
+            console.error("Error Details:", error.response?.data || error.message);
+            toast.error(error.response?.data?.message || 'Failed to send OTP. Please check your email.');
+        }
     };
 
+    const handleCloseOtpModal = async () => {
+        const enteredOtp = otp.join('');
+        
+        // Check if OTP is filled
+        if (!enteredOtp || enteredOtp.length !== 4) { // Ensure OTP length is 4
+            setOtpError('OTP must be 4 digits long.');
+            toast.error('Please enter a valid 4-digit OTP.');
+            return;
+        }
+    
+        try {
+            const response = await axios.post(
+                `${baseUrl}/student/forgot/password/otpVerification`,
+                { 
+                    email, 
+                    otp: enteredOtp, 
+                    studentId: formData.studentId 
+                }
+            );
+    
+            if (response.status === 200) {
+                setShowOtpModal(false);
+                setShowResetPasswordModal(true);
+                setOtpError('');
+                toast.success('OTP verified successfully!');
+            } else {
+                throw new Error('Invalid OTP');
+            }
+        } catch (error) {
+            console.error("Error Details:", error.response?.data || error.message);
+            setOtpError('Invalid OTP. Please try again.');
+            toast.error(error.response?.data?.message || 'Invalid OTP. Please try again.');
+        }
+    };
     const handleOpenOtpModal = () => {
         setShowSuccessModal(false);
         setShowOtpModal(true);
     };
 
-    const handleCloseOtpModal = () => {
-        const enteredOtp = otp.join('');
-        if (enteredOtp === '1234' && otp.every(digit => digit !== '')) {
-            setShowOtpModal(false);
-            setShowResetPasswordModal(true);
-            setOtpError('');
-        } else {
-            setOtpError(otp.includes('') ? 'Please fill all OTP fields.' : 'Invalid OTP. Please try again.');
-            toast.error(otp.includes('') ? 'Please fill all OTP fields.' : 'Invalid OTP. Please try again.'); // Toast notification for OTP error
-        }
-    };
+    const handleResetPassword = async () => {
+        const newPassword = formData.NewPassword.trim();
+        const confirmPassword = formData.confrim_password.trim();
 
-    const handleResetPassword = () => {
-        // Reset password validation
         if (!newPassword || !confirmPassword) {
             setPasswordError('Both fields are required!');
-            toast.error('Both fields are required!'); // Toast notification for empty fields
+            toast.error('Both fields are required!');
             return;
         }
 
         if (newPassword !== confirmPassword) {
             setPasswordError('Passwords do not match!');
-            toast.error('Passwords do not match!'); // Toast notification for password mismatch
+            toast.error('Passwords do not match!');
             return;
         }
 
-        // If passwords match and are filled, reset the password
-        toast.success('Password reset successfully!'); // Toast notification for success
-        setShowResetPasswordModal(false);
-        setNewPassword('');
-        setConfirmPassword('');
-        setPasswordError('');
+        if (newPassword.length < 8) {
+            setPasswordError('Password must be at least 8 characters long!');
+            toast.error('Password must be at least 8 characters long!');
+            return;
+        }
+
+        try {
+            const response = await axios.post(`${baseUrl}/student/newpassword`, {
+                NewPassword: newPassword,
+                confrim_password: confirmPassword,
+                studentId: formData.studentId,
+            });
+
+            if (response.status === 200) {
+                toast.success('Password reset successfully!');
+                setShowResetPasswordModal(false);
+                setFormData({ NewPassword: "", confrim_password: "", studentId: "" });
+                setPasswordError('');
+            } else {
+                toast.error('Failed to reset password. Please try again.');
+            }
+        } catch (error) {
+            console.error("Error resetting password:", error.response ? error.response.data : error.message);
+            if (error.response && error.response.status === 400) {
+                toast.error(error.response.data.message || 'Bad Request. Please check your input and try again.');
+            } else {
+                toast.error('Failed to reset password. Please try again.');
+            }
+        }
     };
 
     const isOtpComplete = otp.every((digit) => digit !== '');
 
     return (
         <div style={{ paddingTop: '100px', filter: showSuccessModal || showOtpModal || showResetPasswordModal ? 'blur(8px)' : 'none' }}>
-            <ToastContainer /> {/* Toast container for notifications */}
+            <ToastContainer />
             <div className='student_profile'>
                 <FaQuoteRight className='FaQuoteRightpro' /><br />
                 <h3>We are what we repeatedly do. Excellence then is not an act but a habit.</h3>
@@ -161,7 +225,7 @@ function Forgetpassword() {
             <Modal show={showSuccessModal} onHide={() => { }} centered className='custom-modal'>
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body className='modelboddy'>
-                    <div className="div3-warnin3">
+                    <div className=" div3-warnin3">
                         <div className="div2-warning2">
                             <div className="div-warning1">
                                 <BsCheck className='sucsses' />
@@ -224,7 +288,7 @@ function Forgetpassword() {
                     </p>
                     <button
                         className="btn-LogIn LogInotp"
-                        onClick={handleCloseOtpModal}
+ onClick={handleCloseOtpModal}
                         disabled={!isOtpComplete}
                     >
                         Submit
@@ -232,17 +296,16 @@ function Forgetpassword() {
                 </Modal.Body>
             </Modal>
 
-            {/* forget Password Modal */}
+            {/* Reset Password Modal */}
             <Modal show={showResetPasswordModal} onHide={() => setShowResetPasswordModal(false)} centered className='custom-modal'>
                 <Modal.Body className='modelboddy resetpassmodel'>
                     <div>
                         <IoMdArrowBack
-                            className='IoMdArrowBack'
+                            className='IoMdArrowBack IoMdArrowBack12'
                             onClick={() => {
                                 setShowResetPasswordModal(false);
                                 setShowOtpModal(true);
                             }}
-                            style={{ marginTop: '-50%' }}
                         />
                         <img src={imgreset} alt='img' />
                     </div>
@@ -253,8 +316,8 @@ function Forgetpassword() {
                             <input
                                 type={passwordVisible ? "text" : "password"}
                                 placeholder="Create Password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
+                                value={formData.NewPassword}
+                                onChange={(e) => setFormData({ ...formData, NewPassword: e.target.value })}
                             />
                             <span onClick={togglePasswordVisibility}>
                                 {passwordVisible ? <FaEye /> : <FaEyeSlash />}
@@ -264,8 +327,8 @@ function Forgetpassword() {
                             <input
                                 type={confirmPasswordVisible ? "text" : "password"}
                                 placeholder="Re-enter Password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                value={formData.confrim_password}
+                                onChange={(e) => setFormData({ ...formData, confrim_password: e.target.value })}
                             />
                             <span onClick={toggleConfirmPasswordVisibility}>
                                 {confirmPasswordVisible ? <FaEye /> : <FaEyeSlash />}
@@ -276,8 +339,8 @@ function Forgetpassword() {
                     <button className="btn-LogIn LogInotp" onClick={handleResetPassword}>Create</button>
                 </Modal.Body>
             </Modal>
-            <Getintouch/>
-            <Footer/>
+            <Getintouch />
+            <Footer />
         </div>
     );
 }

@@ -88,6 +88,7 @@
   border-radius: 1rem;
   width: 100%;
   min-height: 150px;
+  color: white;
   outline: none;
 }
 .send-msg {
@@ -130,5 +131,7 @@
     width: 300px;
   }
 }
+
+
 
 /* Get in touch with us anytime end...................................! */
