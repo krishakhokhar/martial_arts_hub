@@ -8,7 +8,7 @@
   margin-bottom: 35px;
 }
 
-.payment-button {
+.payment-buttonc {
   background-color: transparent;
   color: #0f0f0fb2;
   width: 217px;
@@ -22,7 +22,7 @@
   transition: all 0.3s ease;
 }
 
-.payment-button.active {
+.payment-buttonc.active {
   background-color: #6b6b6b;
   color: #fff;
 }
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.payment-button.active .payment-link {
+.payment-buttonc.active .payment-link {
   color: #fff;
 }
  @media(max-width:1100px){
@@ -43,12 +43,12 @@
         border: none;
         padding: 0px;
     }
-    .payment-button{
+    .payment-buttonc{
         border: 1px solid #0f0f0f33;
     }
  }
  @media(max-width:768px){
-    .payment-button{
+    .payment-buttonc{
         width: 170px;
         border: 1px solid #0f0f0f33;
         height: 43px;

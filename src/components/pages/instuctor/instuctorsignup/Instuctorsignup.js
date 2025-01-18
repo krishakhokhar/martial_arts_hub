@@ -60,50 +60,31 @@ function Instuctorsignup() {
         return Object.keys(newErrors).length === 0;
     };
     const postData = async (event) => {
-        try {
-            event.preventDefault();
-            if (validateForm()) {
-                setIsSignedUp(true); // Keep the sign-up modal open
-                localStorage.setItem("userEmail", formData.email);
-
-                setUserEmail(formData.email);
-
-                // API request
+        event.preventDefault();
+        if (validateForm()) {
+            try {
+                console.log("Sending Data: ", formData); // डेटा चेक करें
                 const response = await axios.post(`${baseUrl}/instructor/signup`, {
                     email: formData.email,
                     password: formData.password,
                     confirmPassword: formData.confirmPassword,
                 });
-
-                if (response.status === 201) {
-                    // Signup success
-                    setFormData({ email: "", password: "", confirmPassword: "" });
-                    setErrors({});
-                    setShowSuccessModal(true); // Show success modal
-                    toast.success("Signup successful!"); // Success message
-                }
-            }
-        } catch (error) {
-            console.error("Error details:", error);
-            if (error.response) {
-                if (error.response.status === 400) {
-                    setErrors({ email: "Email already in use. Please try another email." });
+                console.log("Signup Successful: ", response.data);
+                setFormData({ email: "", password: "", confirmPassword: "" });
+                setErrors({});
+                setShowSuccessModal(true);
+                toast.success("Signup successful!");
+            } catch (error) {
+                console.error("Error Details: ", error.response?.data || error.message);
+                if (error.response?.status === 400) {
+                    setErrors({ email: "Email already in use or invalid data." });
                     toast.error("Email already in use.");
                 } else {
-                    // Handle other status codes and show error messages
-                    toast.error(`Error: ${error.response.data.message || 'Something went wrong!'}`);
+                    toast.error("Something went wrong!");
                 }
-            } else if (error.request) {
-                // No response received from the server
-                console.error("No response received:", error.request);
-                toast.error("Server not responding. Please try again later.");
-            } else {
-                // General unexpected error
-                console.error("Unexpected error:", error.message);
-                toast.error("An unexpected error occurred. Please try again.");
             }
         }
-    }
+    };
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);

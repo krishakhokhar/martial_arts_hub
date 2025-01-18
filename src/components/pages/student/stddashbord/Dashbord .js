@@ -47,12 +47,19 @@ function Dashbord() {
       name: "Jhon Martin",
       instructor: "•Wrestling Instructor",
       intro: "Your Inquiry message request is reached to the Instructor. Please wait for the confirmation. "
-    }, {
+    },
+     {
       img: reqvestimg2,
       name: "Keyn Mojho",
       instructor: "•Boxing Instructor",
       intro: "Your Inquiry message request is reached to the Instructor. Please wait for the confirmation. "
-    }
+    },
+    {
+      img: reqvestimg2,
+      name: "Keyn Mojho",
+      instructor: "•Boxing Instructor",
+      intro: "Your Inquiry message request is reached to the Instructor. Please wait for the confirmation. "
+    },
   ];
 
   const payment = [
@@ -71,6 +78,22 @@ function Dashbord() {
       InstructorName: "Mr. Smith Martin",
       price: "10.99",
       btnname: "Payment Unsuccessful"
+    },
+    {
+      img: paymentimg2,
+      name: "Boxing",
+      CourseDuration: "Time here",
+      InstructorName: "Mr. Smith Martin",
+      price: "10.99",
+      btnname: "Payment Unsuccessful"
+    },
+      {
+      img: paymentimg2,
+      name: "Boxing",
+      CourseDuration: "Time here",
+      InstructorName: "Mr. Smith Martin",
+      price: "10.99",
+      btnname: "Payment Unsuccessful"
     }
   ]
 
@@ -80,7 +103,7 @@ function Dashbord() {
       name: "Boxing",
       info: "A striking discipline that develops punches, footwork, and defense, improving fitness and coordination.",
       btnname: "Starts on 25 Aug",
-      class:"Starts"
+      class: "Starts"
     },
 
     {
@@ -88,7 +111,7 @@ function Dashbord() {
       name: "Wrestling",
       info: "A grappling sport focused on takedowns, holds, and pins, enhancing strength and agility.",
       btnname: "See Details",
-      class:"Details"
+      class: "Details"
     }
   ]
   const navigat = useNavigate()
@@ -158,7 +181,7 @@ function Dashbord() {
                           <div className='inffo'><p>{request.intro}</p></div>
                         </div>
                       </div>
-                      <div>
+                      <div className='dashhbordbtn3'>
                         <Button className="btnview" text={"View"} />
                       </div>
                     </div>
@@ -171,7 +194,7 @@ function Dashbord() {
 
             <div className="Payments">
               <p className='py'>Payments</p>
-              <div>
+              <div className="insdash">
                 {payment.map((item, index) => (
                   <div key={index} className=" payment-item">
                     <div className="payment-img">

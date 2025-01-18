@@ -123,7 +123,7 @@
   gap: 20px;
 }
 .reqvest {
-  width: 560px;
+  width: 600px;
   height: 375px;
   background-color: #d9d7cf;
   border-radius: 25px;
@@ -132,7 +132,8 @@
 }
 .reqvest-btn {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 12px;
 }
 .reqvest-btn p {
   color: #6b6b6b;
@@ -179,7 +180,7 @@
 }
 
 .Payments {
-  width: 660px;
+  width: 615px;
   height: 375px;
   background-color: #d9d7cf;
   border-radius: 25px;
@@ -245,7 +246,7 @@
   color: #6b6b6b;
   font-size: 19px;
   font-weight: 500;
-  padding: 20px 20px 20px 34px;
+  padding: 20px 20px 0px 34px;
 }
 .Recent {
   position: absolute;
@@ -298,7 +299,15 @@
 .payment-item {
   display: flex;
 }
+.items2{
+  max-height: 280px ;
+  scrollbar-width: none ;
+  overflow: auto;
+}
 
+.dashhbordbtn3 {
+  margin-left: 10%;
+}
 @media (max-width: 1104px) {
   .std-dash {
     float: none;
@@ -435,12 +444,12 @@
   .resentdiv {
     padding-left: 0px;
   }
-  .Starts{
+  .Starts {
     margin-left: auto !important;
     margin-right: auto;
     display: block;
   }
-  .Details{
+  .Details {
     margin-left: auto !important;
     margin-right: auto;
     display: block;

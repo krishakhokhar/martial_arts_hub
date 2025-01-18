@@ -31,20 +31,20 @@ function Pymentbtn() {
   return (
     <div className="payment-container">
       <div className="payment-buttons">
-        <button className={`payment-button ${activeButton === 'Credit / Debit Card' ? 'active' : ''}`} onClick={paycredit}>
+        <button className={`.payment-buttonc ${activeButton === 'Credit / Debit Card' ? 'active' : ''}`} onClick={paycredit}>
           <Link to="/PaymentCredit" className="payment-link">
             Credit / Debit Card
           </Link>
         </button>
         <button
-          className={`payment-button ${activeButton === 'PayPal' ? 'active' : ''}`}
+          className={`payment-buttonc ${activeButton === 'PayPal' ? 'active' : ''}`}
           onClick={handlePaypalClick} // Trigger the navigation with data
         >
           <Link to="/Paypal" className="payment-link">
             PayPal
           </Link>
         </button>
-        <button className={`payment-button ${activeButton === 'Apple Pay' ? 'active' : ''}`}>
+        <button className={`payment-buttonc ${activeButton === 'Apple Pay' ? 'active' : ''}`}>
           <Link to="/apple-pay" className="payment-link">
             Apple Pay
           </Link>

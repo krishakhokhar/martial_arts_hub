@@ -31,6 +31,8 @@ import BookClassform from './components/pages/student/Instuctorprofile/BookClass
 import PaymentCredit from './components/pages/student/Instuctorprofile/BookClassform/PaymentCredit/PaymentCredit';
 import Pymentbtn from './components/comman/pymentbutton/Pymentbtn';
 import Paypal from './components/pages/student/Instuctorprofile/BookClassform/paypal/Paypal';
+import Instractordashheader from './components/comman/instructordashheader/Instractordashheader';
+import Dashbordins from './components/pages/instuctor/DashborardAllpage/Dashbordins/Dashbordins';
 
 
 
@@ -80,6 +82,8 @@ function App() {
         <Route path="/MyProfileform" element={<MyProfile />} />
         <Route path="/MyProfile" element={<InstructorProfile />} />
         <Route path="/Becomeinlogin" element={<Becomeinlogin />} />
+        <Route path="/Instractordashheader" element={<Instractordashheader />} />
+        <Route path="/Dashbordins" element={<Dashbordins />} />
       </Routes>
     </div>
   );
